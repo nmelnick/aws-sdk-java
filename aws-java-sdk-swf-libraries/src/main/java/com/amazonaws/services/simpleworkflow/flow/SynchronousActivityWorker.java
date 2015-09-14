@@ -132,7 +132,7 @@ public class SynchronousActivityWorker {
         return poller.getTaskListToPoll();
     }
 
-    @Override
+    
     public String toString() {
         return this.getClass().getSimpleName() + "[poller=" + poller + ", factory=" + factory + "]";
     }

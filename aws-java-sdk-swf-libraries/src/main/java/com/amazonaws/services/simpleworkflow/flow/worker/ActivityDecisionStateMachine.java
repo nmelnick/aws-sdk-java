@@ -37,7 +37,7 @@ class ActivityDecisionStateMachine extends DecisionStateMachineBase {
         this.scheduleAttributes = scheduleAttributes;
     }
 
-    @Override
+    
     public Decision getDecision() {
         switch (state) {
         case CREATED:
@@ -49,7 +49,7 @@ class ActivityDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
 
-    @Override
+    
     public void handleDecisionTaskStartedEvent() {
         switch (state) {
         case CANCELED_AFTER_INITIATED:
@@ -62,7 +62,7 @@ class ActivityDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
 
-    @Override
+    
     public void handleCancellationFailureEvent(HistoryEvent event) {
         switch (state) {
         case CANCELLATION_DECISION_SENT:

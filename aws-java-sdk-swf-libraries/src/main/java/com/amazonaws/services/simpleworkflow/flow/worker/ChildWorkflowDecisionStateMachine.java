@@ -39,7 +39,7 @@ class ChildWorkflowDecisionStateMachine extends DecisionStateMachineBase {
         this.startAttributes = startAttributes;
     }
 
-    @Override
+    
     public Decision getDecision() {
         switch (state) {
         case CREATED:
@@ -51,7 +51,7 @@ class ChildWorkflowDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
 
-    @Override
+    
     public void handleDecisionTaskStartedEvent() {
         switch (state) {
         case CANCELED_AFTER_STARTED:
@@ -62,7 +62,7 @@ class ChildWorkflowDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
 
-    @Override
+    
     public void handleStartedEvent(HistoryEvent event) {
         stateHistory.add("handleStartedEvent");
         switch (state) {
@@ -76,7 +76,7 @@ class ChildWorkflowDecisionStateMachine extends DecisionStateMachineBase {
         stateHistory.add(state.toString());
     }
 
-    @Override
+    
     public void handleCancellationFailureEvent(HistoryEvent event) {
         switch (state) {
         case CANCELLATION_DECISION_SENT:
@@ -89,7 +89,7 @@ class ChildWorkflowDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
     
-    @Override
+    
     public void cancel(Runnable immediateCancellationCallback) {
         switch (state) {
         case STARTED:
@@ -102,7 +102,7 @@ class ChildWorkflowDecisionStateMachine extends DecisionStateMachineBase {
         }        
     }
 
-    @Override
+    
     public void handleCompletionEvent() {
         switch (state) {
         case STARTED:

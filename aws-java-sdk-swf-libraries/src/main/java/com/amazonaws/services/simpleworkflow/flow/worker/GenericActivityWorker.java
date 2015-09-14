@@ -80,18 +80,18 @@ public class GenericActivityWorker extends GenericWorker {
         return new Semaphore(taskExecutorThreadPoolSize);
     }
 
-    @Override
+    
     public String toString() {
         return this.getClass().getSimpleName() + " [super=" + super.toString() + ", taskExecutorThreadPoolSize="
                 + taskExecutorThreadPoolSize + "]";
     }
 
-    @Override
+    
     protected String getPollThreadNamePrefix() {
         return POLL_THREAD_NAME_PREFIX + getTaskListToPoll() + " ";
     }
 
-    @Override
+    
     protected TaskPoller createPoller() {
         ThreadPoolExecutor tasksExecutor = new ThreadPoolExecutor(1, taskExecutorThreadPoolSize, 1, TimeUnit.MINUTES,
                 new SynchronousQueue<Runnable>());
@@ -100,7 +100,7 @@ public class GenericActivityWorker extends GenericWorker {
         return new ActivityTaskPoller(service, domain, getTaskListToPoll(), activityImplementationFactory, tasksExecutor);
     }
 
-    @Override
+    
     public void registerTypesToPoll() {
         registerActivityTypes(service, domain, getTaskListToPoll(), activityImplementationFactory);
     }
@@ -157,7 +157,7 @@ public class GenericActivityWorker extends GenericWorker {
         }
     }
 
-    @Override
+    
     protected void checkRequredProperties() {
         checkRequiredProperty(activityImplementationFactory, "activityImplementationFactory");
     }

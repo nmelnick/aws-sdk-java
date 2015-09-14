@@ -38,7 +38,7 @@ class ManualActivityCompletionClientImpl extends ManualActivityCompletionClient 
         this.dataConverter = dataConverter;
     }
 
-    @Override
+    
     public void complete(Object result) {
         RespondActivityTaskCompletedRequest request = new RespondActivityTaskCompletedRequest();
         String convertedResult = dataConverter.toData(result);
@@ -47,7 +47,7 @@ class ManualActivityCompletionClientImpl extends ManualActivityCompletionClient 
         service.respondActivityTaskCompleted(request);
     }
 
-    @Override
+    
     public void fail(Throwable failure) {
         RespondActivityTaskFailedRequest request = new RespondActivityTaskFailedRequest();
         String convertedFailure = dataConverter.toData(failure);
@@ -57,7 +57,7 @@ class ManualActivityCompletionClientImpl extends ManualActivityCompletionClient 
         service.respondActivityTaskFailed(request);
     }
 
-    @Override
+    
     public void recordHeartbeat(String details) throws CancellationException {
         RecordActivityTaskHeartbeatRequest request = new RecordActivityTaskHeartbeatRequest();
         request.setDetails(details);
@@ -69,7 +69,7 @@ class ManualActivityCompletionClientImpl extends ManualActivityCompletionClient 
         }
     }
 
-    @Override
+    
     public void reportCancellation(String details) {
         RespondActivityTaskCanceledRequest request = new RespondActivityTaskCanceledRequest();
         request.setDetails(details);

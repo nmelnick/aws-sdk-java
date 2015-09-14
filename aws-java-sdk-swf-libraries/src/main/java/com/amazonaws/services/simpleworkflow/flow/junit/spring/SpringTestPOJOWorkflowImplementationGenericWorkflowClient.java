@@ -42,7 +42,7 @@ public class SpringTestPOJOWorkflowImplementationGenericWorkflowClient implement
         genericClient = new TestGenericWorkflowClient();
         genericClient.setFactoryFactory(new POJOWorkflowDefinitionFactoryFactory() {
 
-            @Override
+            
             protected POJOWorkflowImplementationFactory getImplementationFactory(Class<?> workflowImplementationType,
                     Class<?> workflowInteface, WorkflowType workflowType) {
                 final Object instanceProxy = workflowImplementations.get(workflowImplementationType);
@@ -51,13 +51,13 @@ public class SpringTestPOJOWorkflowImplementationGenericWorkflowClient implement
                 }
                 return new POJOWorkflowImplementationFactory() {
 
-                    @Override
+                    
                     public Object newInstance(DecisionContext decisionContext) throws Exception {
                         WorkflowScope.setDecisionContext(decisionContext);
                         return instanceProxy;
                     }
 
-                    @Override
+                    
                     public void deleteInstance(Object instance) {
                         WorkflowScope.removeDecisionContext();
                     }

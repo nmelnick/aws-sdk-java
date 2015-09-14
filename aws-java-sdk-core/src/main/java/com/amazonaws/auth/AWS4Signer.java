@@ -351,7 +351,7 @@ public class AWS4Signer extends AbstractAWSSigner implements
         }
         if (log.isDebugEnabled()) {
             log.debug("Generating a new signing key as the signing key not available in the cache for the date "
-                    + TimeUnit.DAYS.toMillis(daysSinceEpochSigningDate));
+                    + ( (long) daysSinceEpochSigningDate * 86400000 ));
         }
         byte[] signingKey = newSigningKey(credentials,
                 signerRequestParams.getFormattedSigningDate(),
@@ -384,7 +384,7 @@ public class AWS4Signer extends AbstractAWSSigner implements
      */
     protected final byte[] computeSignature(String stringToSign,
             byte[] signingKey, AWS4SignerRequestParams signerRequestParams) {
-        return sign(stringToSign.getBytes(Charset.forName("UTF-8")), signingKey,
+        return sign(stringToSign.getBytes(), signingKey,
                 SigningAlgorithm.HmacSHA256);
     }
 
@@ -572,7 +572,7 @@ public class AWS4Signer extends AbstractAWSSigner implements
     private byte[] newSigningKey(AWSCredentials credentials,
             String dateStamp, String regionName, String serviceName) {
         byte[] kSecret = ("AWS4" + credentials.getAWSSecretKey())
-                .getBytes(Charset.forName("UTF-8"));
+                .getBytes();
         byte[] kDate = sign(dateStamp, kSecret, SigningAlgorithm.HmacSHA256);
         byte[] kRegion = sign(regionName, kDate, SigningAlgorithm.HmacSHA256);
         byte[] kService = sign(serviceName, kRegion,

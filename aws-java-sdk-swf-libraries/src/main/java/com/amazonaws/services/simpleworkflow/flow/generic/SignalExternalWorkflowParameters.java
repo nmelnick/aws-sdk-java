@@ -79,7 +79,7 @@ public class SignalExternalWorkflowParameters implements Cloneable {
         return this;
     }
     
-    @Override
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");

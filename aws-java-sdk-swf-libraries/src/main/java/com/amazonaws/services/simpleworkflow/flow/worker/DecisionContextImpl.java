@@ -38,22 +38,22 @@ class DecisionContextImpl extends DecisionContext {
         this.workflowContext = workflowContext;
     }
 
-    @Override
+    
     public GenericActivityClient getActivityClient() {
        return activityClient;
     }
 
-    @Override
+    
     public GenericWorkflowClient getWorkflowClient() {
         return workflowClient;
     }
 
-    @Override
+    
     public WorkflowClock getWorkflowClock() {
         return workflowClock;
     }
 
-    @Override
+    
     public WorkflowContext getWorkflowContext() {
         return workflowContext;
     }

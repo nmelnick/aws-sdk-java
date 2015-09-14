@@ -83,7 +83,7 @@ public class WorkflowTypeRegistrationOptions {
         this.defaultTaskPriority = defaultTaskPriority;
     }
 
-    @Override
+    
     public String toString() {
         return "WorkflowVersionRegistrationOptions [defaultTaskList=" + defaultTaskList
                 + ", defaultExecutionStartToCloseTimeoutSeconds=" + defaultExecutionStartToCloseTimeoutSeconds

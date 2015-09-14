@@ -70,7 +70,7 @@ public class ActivityTypeExecutionOptions {
         this.doNotRetryTaskFailed = doNotRetryTaskFailed;
     }
 
-    @Override
+    
     public String toString() {
         return "ActivityTypeExecutionOptions [isAsynchronous=" + manualActivityCompletion + "]";
     }

@@ -60,7 +60,7 @@ public class AsyncAssert {
     static public void assertTrueWaitFor(final String message, final boolean condition, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertTrue(message, condition);
             }
@@ -70,7 +70,7 @@ public class AsyncAssert {
     static public void assertTrue(final String message, final Promise<Boolean> condition) {
         new Task(condition) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertTrue(message, condition.get());
             }
@@ -80,7 +80,7 @@ public class AsyncAssert {
     static public void assertTrueWaitFor(final boolean condition, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertTrue(condition);
             }
@@ -90,7 +90,7 @@ public class AsyncAssert {
     static public void assertTrue(final Promise<Boolean> condition) {
         new Task(condition) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertTrue(condition.get());
             }
@@ -100,7 +100,7 @@ public class AsyncAssert {
     static public void assertFalseWaitFor(final String message, final boolean condition, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertFalse(message, condition);
             }
@@ -110,7 +110,7 @@ public class AsyncAssert {
     static public void assertFalse(final String message, final Promise<Boolean> condition) {
         new Task(condition) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertFalse(message, condition.get());
             }
@@ -120,7 +120,7 @@ public class AsyncAssert {
     static public void assertFalseWaitFor(final boolean condition, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertFalse(condition);
             }
@@ -130,7 +130,7 @@ public class AsyncAssert {
     static public void assertFalse(final Promise<Boolean> condition) {
         new Task(condition) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertFalse(condition.get());
             }
@@ -140,7 +140,7 @@ public class AsyncAssert {
     static public void assertEquals(final String message, final Object expected, final Promise<?> actual) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertEquals(message, expected, actual.get());
             }
@@ -151,7 +151,7 @@ public class AsyncAssert {
             Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertEquals(message, expected, actual);
             }
@@ -161,7 +161,7 @@ public class AsyncAssert {
     static public void assertEquals(final Object expected, final Promise<?> actual) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertEquals(expected, actual.get());
             }
@@ -171,7 +171,7 @@ public class AsyncAssert {
     static public void assertEqualsWaitFor(final Object expected, final Object actual, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertEquals(expected, actual);
             }
@@ -182,7 +182,7 @@ public class AsyncAssert {
             Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertArrayEquals(message, expected, actual);
             }
@@ -192,7 +192,7 @@ public class AsyncAssert {
     public static void assertArrayEquals(final String message, final Object[] expected, final Promise<Object[]> actual) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertArrayEquals(message, expected, actual.get());
             }
@@ -202,7 +202,7 @@ public class AsyncAssert {
     public static void assertArrayEqualsWaitFor(final Object[] expected, final Object[] actual, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertArrayEquals(expected, actual);
             }
@@ -212,7 +212,7 @@ public class AsyncAssert {
     public static void assertArrayEquals(final Object[] expected, final Promise<Object[]> actual) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertArrayEquals(expected, actual.get());
             }
@@ -223,7 +223,7 @@ public class AsyncAssert {
             Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertEquals(message, expected, actual, delta);
             }
@@ -233,7 +233,7 @@ public class AsyncAssert {
     static public void assertEquals(final String message, final double expected, final Promise<Double> actual, final double delta) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertEquals(message, expected, actual.get(), delta);
             }
@@ -243,7 +243,7 @@ public class AsyncAssert {
     static public void assertEqualsWaitFor(final double expected, final double actual, final double delta, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertEquals(expected, actual, delta);
             }
@@ -253,7 +253,7 @@ public class AsyncAssert {
     static public void assertEquals(final double expected, final Promise<Double> actual, final double delta) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertEquals(expected, actual.get(), delta);
             }
@@ -263,7 +263,7 @@ public class AsyncAssert {
     static public void assertNotNullWaitFor(final String message, final Object object, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNotNull(message, object);
             }
@@ -284,7 +284,7 @@ public class AsyncAssert {
         Assert.assertNotNull(message, object);
         new Task(object) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNotNull(message, object.get());
             }
@@ -294,7 +294,7 @@ public class AsyncAssert {
     static public void assertNotNullWaitFor(final Object object, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNotNull(object);
             }
@@ -308,7 +308,7 @@ public class AsyncAssert {
         Assert.assertNotNull(object);
         new Task(object) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNotNull(object.get());
             }
@@ -318,7 +318,7 @@ public class AsyncAssert {
     static public void assertNullWaitFor(final String message, final Object object, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNull(message, object);
             }
@@ -333,7 +333,7 @@ public class AsyncAssert {
         Assert.assertNotNull(object);
         new Task(object) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNull(message, object.get());
             }
@@ -343,7 +343,7 @@ public class AsyncAssert {
     static public void assertNullWaitFor(final Object object, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNull(object);
             }
@@ -358,7 +358,7 @@ public class AsyncAssert {
         Assert.assertNotNull(object);
         new Task(object) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNull(object.get());
             }
@@ -368,7 +368,7 @@ public class AsyncAssert {
     static public void assertSameWaitFor(final String message, final Object expected, final Object actual, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertSame(message, expected, actual);
             }
@@ -382,7 +382,7 @@ public class AsyncAssert {
     static public void assertSame(final String message, final Object expected, final Promise<Object> actual) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertSame(message, expected, actual.get());
             }
@@ -392,7 +392,7 @@ public class AsyncAssert {
     static public void assertSameWaitFor(final Object expected, final Object actual, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertSame(expected, actual);
             }
@@ -406,7 +406,7 @@ public class AsyncAssert {
     static public void assertSame(final Object expected, final Promise<Object> actual) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertSame(expected, actual.get());
             }
@@ -417,7 +417,7 @@ public class AsyncAssert {
             Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNotSame(message, expected, actual);
             }
@@ -431,7 +431,7 @@ public class AsyncAssert {
     static public void assertNotSame(final String message, final Object expected, final Promise<Object> actual) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNotSame(message, expected, actual.get());
             }
@@ -441,7 +441,7 @@ public class AsyncAssert {
     static public void assertNotSameWaitFor(final Object expected, final Object actual, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNotSame(expected, actual);
             }
@@ -455,7 +455,7 @@ public class AsyncAssert {
     static public void assertNotSame(final Object expected, final Promise<Object> actual) {
         new Task(actual) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Assert.assertNotSame(expected, actual.get());
             }

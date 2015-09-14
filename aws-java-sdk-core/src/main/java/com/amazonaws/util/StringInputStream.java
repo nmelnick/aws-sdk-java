@@ -27,7 +27,7 @@ public class StringInputStream extends ByteArrayInputStream {
     private final String string;
 
     public StringInputStream(String s) throws UnsupportedEncodingException {
-        super(s.getBytes(UTF8));
+        super(s.getBytes());
         this.string = s;
     }
 

@@ -61,7 +61,7 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         genericWorker.setService(service);
     }
 
-    @Override
+    
     public String getDomain() {
         return genericWorker.getDomain();
     }
@@ -70,7 +70,7 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         genericWorker.setDomain(domain);
     }
 
-    @Override
+    
     public boolean isRegisterDomain() {
         return genericWorker.isRegisterDomain();
     }
@@ -79,7 +79,7 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         genericWorker.setRegisterDomain(registerDomain);
     }
 
-    @Override
+    
     public long getDomainRetentionPeriodInDays() {
         return genericWorker.getDomainRetentionPeriodInDays();
     }
@@ -88,7 +88,7 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         genericWorker.setDomainRetentionPeriodInDays(domainRetentionPeriodInDays);
     }
 
-    @Override
+    
     public String getTaskListToPoll() {
         return genericWorker.getTaskListToPoll();
     }
@@ -105,112 +105,112 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         factoryFactory.setDataConverter(converter);
     }
 
-    @Override
+    
     public double getMaximumPollRatePerSecond() {
         return genericWorker.getMaximumPollRatePerSecond();
     }
 
-    @Override
+    
     public void setMaximumPollRatePerSecond(double maximumPollRatePerSecond) {
         genericWorker.setMaximumPollRatePerSecond(maximumPollRatePerSecond);
     }
 
-    @Override
+    
     public int getMaximumPollRateIntervalMilliseconds() {
         return genericWorker.getMaximumPollRateIntervalMilliseconds();
     }
 
-    @Override
+    
     public void setMaximumPollRateIntervalMilliseconds(int maximumPollRateIntervalMilliseconds) {
         genericWorker.setMaximumPollRateIntervalMilliseconds(maximumPollRateIntervalMilliseconds);
     }
 
-    @Override
+    
     public UncaughtExceptionHandler getUncaughtExceptionHandler() {
         return genericWorker.getUncaughtExceptionHandler();
     }
 
-    @Override
+    
     public void setUncaughtExceptionHandler(UncaughtExceptionHandler uncaughtExceptionHandler) {
         genericWorker.setUncaughtExceptionHandler(uncaughtExceptionHandler);
     }
 
-    @Override
+    
     public String getIdentity() {
         return genericWorker.getIdentity();
     }
 
-    @Override
+    
    public void setIdentity(String identity) {
         genericWorker.setIdentity(identity);
     }
 
-    @Override
+    
     public long getPollBackoffInitialInterval() {
         return genericWorker.getPollBackoffInitialInterval();
     }
 
-    @Override
+    
     public void setPollBackoffInitialInterval(long backoffInitialInterval) {
         genericWorker.setPollBackoffInitialInterval(backoffInitialInterval);
     }
 
-    @Override
+    
     public long getPollBackoffMaximumInterval() {
         return genericWorker.getPollBackoffMaximumInterval();
     }
 
-    @Override
+    
     public void setPollBackoffMaximumInterval(long backoffMaximumInterval) {
         genericWorker.setPollBackoffMaximumInterval(backoffMaximumInterval);
     }
 
-    @Override
+    
     public boolean isDisableServiceShutdownOnStop() {
         return genericWorker.isDisableServiceShutdownOnStop();
     }
 
-    @Override
+    
     public void setDisableServiceShutdownOnStop(boolean disableServiceShutdownOnStop) {
         genericWorker.setDisableServiceShutdownOnStop(disableServiceShutdownOnStop);
     }
 
-    @Override
+    
     public void setDisableTypeRegistrationOnStart(boolean disableTypeRegistrationOnStart) {
         genericWorker.setDisableTypeRegistrationOnStart(disableTypeRegistrationOnStart);
     }
 
-    @Override
+    
     public boolean isDisableTypeRegistrationOnStart() {
         return genericWorker.isDisableTypeRegistrationOnStart();
     }
 
-    @Override
+    
     public double getPollBackoffCoefficient() {
         return genericWorker.getPollBackoffCoefficient();
     }
 
-    @Override
+    
     public void setPollBackoffCoefficient(double backoffCoefficient) {
         genericWorker.setPollBackoffCoefficient(backoffCoefficient);
     }
 
-    @Override
+    
     public int getPollThreadCount() {
         return genericWorker.getPollThreadCount();
     }
 
-    @Override
+    
     public void setPollThreadCount(int threadCount) {
         genericWorker.setPollThreadCount(threadCount);
     }
 
-    @Override
+    
     public void suspendPolling() {
         genericWorker.suspendPolling();
     }
 
-    @Override
+    
     public void resumePolling() {
         genericWorker.resumePolling();
     }
@@ -219,22 +219,22 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         return factoryFactory.getWorkflowTypesToRegister();
     }
 
-    @Override
+    
     public void start() {
         genericWorker.start();
     }
 
-    @Override
+    
     public void shutdown() {
         genericWorker.shutdown();
     }
 
-    @Override
+    
     public void shutdownNow() {
         genericWorker.shutdownNow();
     }
 
-    @Override
+    
     public boolean shutdownAndAwaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
         return genericWorker.shutdownAndAwaitTermination(timeout, unit);
     }
@@ -243,7 +243,7 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         genericWorker.shutdownNow();
     }
 
-    @Override
+    
     public boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
         return genericWorker.awaitTermination(timeout, unit);
     }
@@ -263,12 +263,12 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         factoryFactory.addWorkflowImplementation(workflowImplementation);
     }
 
-    @Override
+    
     public String toString() {
         return this.getClass().getSimpleName() + "[genericWorker=" + genericWorker + ", factoryFactory=" + factoryFactory + "]";
     }
 
-    @Override
+    
     public void stop() {
         shutdown();
         try {
@@ -278,7 +278,7 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         }
     }
 
-    @Override
+    
     public boolean isRunning() {
         return genericWorker.isRunning();
     }
@@ -286,7 +286,7 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
     /**
      * @return default is 0
      */
-    @Override
+    
     public int getPhase() {
         return startPhase;
     }
@@ -295,7 +295,7 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         this.startPhase = startPhase;
     }
 
-    @Override
+    
     public boolean isAutoStartup() {
         return !disableAutoStartup;
     }
@@ -316,13 +316,13 @@ public class SpringWorkflowWorker implements WorkerBase, SmartLifecycle {
         this.disableAutoStartup = disableAutoStartup;
     }
 
-    @Override
+    
     public void stop(Runnable callback) {
         stop();
         callback.run();
     }
 
-    @Override
+    
     public void registerTypesToPoll() {
         genericWorker.registerTypesToPoll();
     }

@@ -38,7 +38,7 @@ class SignalDecisionStateMachine extends DecisionStateMachineBase {
         this.attributes = attributes;
     }
     
-    @Override
+    
     public Decision getDecision() {
         switch (state) {
         case CREATED:
@@ -48,12 +48,12 @@ class SignalDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
 
-    @Override
+    
     public boolean isDone() {
         return state == DecisionState.COMPLETED || canceled;
     }
 
-    @Override
+    
     public void handleDecisionTaskStartedEvent() {
         switch (state) {
         case CREATED:
@@ -64,7 +64,7 @@ class SignalDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
 
-    @Override
+    
     public void cancel(Runnable immediateCancellationCallback) {
         stateHistory.add("cancel");
         switch (state) {
@@ -88,7 +88,7 @@ class SignalDecisionStateMachine extends DecisionStateMachineBase {
         stateHistory.add(state.toString());
     }
 
-    @Override
+    
     public void handleInitiatedEvent(HistoryEvent event) {
         stateHistory.add("handleInitiatedEvent");
         switch (state) {
@@ -105,17 +105,17 @@ class SignalDecisionStateMachine extends DecisionStateMachineBase {
 
     }
 
-    @Override
+    
     public void handleInitiationFailedEvent(HistoryEvent event) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
+    
     public void handleStartedEvent(HistoryEvent event) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
+    
     public void handleCompletionEvent() {
         stateHistory.add("handleCompletionEvent");
         switch (state) {
@@ -133,17 +133,17 @@ class SignalDecisionStateMachine extends DecisionStateMachineBase {
         stateHistory.add(state.toString());
     }
 
-    @Override
+    
     public void handleCancellationInitiatedEvent() {
         throw new UnsupportedOperationException();
     }
 
-    @Override
+    
     public void handleCancellationFailureEvent(HistoryEvent event) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
+    
     public void handleCancellationEvent() {
         throw new UnsupportedOperationException();
     }

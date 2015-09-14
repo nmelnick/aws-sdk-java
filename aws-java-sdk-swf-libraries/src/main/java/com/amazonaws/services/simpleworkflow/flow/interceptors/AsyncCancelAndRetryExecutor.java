@@ -41,7 +41,7 @@ public class AsyncCancelAndRetryExecutor implements AsyncExecutor {
 
     protected AsyncRunnable command;
 
-    @Override
+    
     public void execute(final AsyncRunnable cmd) {
         if (currentCommandTryCatchFinally != null) {
             throw new IllegalStateException("Already executing a command");
@@ -49,12 +49,12 @@ public class AsyncCancelAndRetryExecutor implements AsyncExecutor {
         command = cmd;
         currentCommandTryCatchFinally = new TryCatchFinally() {
 
-            @Override
+            
             protected void doTry() throws Throwable {
                 cmd.run();
             }
 
-            @Override
+            
             protected void doCatch(Throwable e) throws Throwable {
                 if (e instanceof CancellationException && commandDone != null) {
                     cancelledDueToRetryRequest = true;
@@ -64,7 +64,7 @@ public class AsyncCancelAndRetryExecutor implements AsyncExecutor {
                 }
             }
 
-            @Override
+            
             protected void doFinally() throws Throwable {
                 if (!cancelledDueToRetryRequest) {
                     command = null;
@@ -87,7 +87,7 @@ public class AsyncCancelAndRetryExecutor implements AsyncExecutor {
                 currentCommandTryCatchFinally.cancel(null);
                 new Task(commandDone) {
 
-                    @Override
+                    
                     protected void doExecute() throws Throwable {
                         if (cancelledDueToRetryRequest) {
                             execute(command);

@@ -34,7 +34,7 @@ public abstract class TryCatch extends TryCatchFinally {
         super(parent, null, null, 7, waitFor);
     }
 
-    @Override
+    
     protected void doFinally() throws Throwable {
     }
 

@@ -46,7 +46,6 @@ class TimerDecisionStateMachine extends DecisionStateMachineBase {
         this.attributes = attributes;
     }
     
-    @Override
     public Decision getDecision() {
         switch (state) {
         case CREATED:
@@ -58,7 +57,6 @@ class TimerDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
 
-    @Override
     public void handleDecisionTaskStartedEvent() {
         switch (state) {
         case CANCELED_AFTER_INITIATED:
@@ -71,7 +69,6 @@ class TimerDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
 
-    @Override
     public void handleCancellationFailureEvent(HistoryEvent event) {
         switch (state) {
         case CANCELLATION_DECISION_SENT:
@@ -84,7 +81,6 @@ class TimerDecisionStateMachine extends DecisionStateMachineBase {
         }
     }
     
-    @Override
     public void cancel(Runnable immediateCancellationCallback) {
         canceled = true;
         immediateCancellationCallback.run();
@@ -95,7 +91,6 @@ class TimerDecisionStateMachine extends DecisionStateMachineBase {
      * As timer is canceled immediately there is no need for waiting after
      * cancellation decision was sent.
      */
-    @Override
     public boolean isDone() {
         return state == DecisionState.COMPLETED || canceled;
     }

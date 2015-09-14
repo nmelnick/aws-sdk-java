@@ -32,22 +32,22 @@ public class TestDecisionContext extends DecisionContext {
         this.workfowContext = workfowContext;
     }
 
-    @Override
+    
     public GenericActivityClient getActivityClient() {
         return activityClient;
     }
 
-    @Override
+    
     public GenericWorkflowClient getWorkflowClient() {
         return workflowClient;
     }
 
-    @Override
+    
     public WorkflowClock getWorkflowClock() {
         return workflowClock;
     }
 
-    @Override
+    
     public WorkflowContext getWorkflowContext() {
         return workfowContext;
     }

@@ -69,12 +69,12 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
             result.setDescription(description);
         }
 
-        @Override
+        
         public String getRunId() {
             return runId;
         }
 
-        @Override
+        
         public Promise<String> getResult() {
             return result;
         }
@@ -96,14 +96,14 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
             this.handle = handle;
         }
 
-        @Override
+        
         public void handleCancellation(Throwable cause) {
             RequestCancelExternalWorkflowExecutionDecisionAttributes cancelAttributes = new RequestCancelExternalWorkflowExecutionDecisionAttributes();
             cancelAttributes.setWorkflowId(workflowId);
 
             decisions.requestCancelExternalWorkflowExecution(true, cancelAttributes, new Runnable() {
 
-                @Override
+                
                 public void run() {
                     OpenRequestInfo<StartChildWorkflowReply, WorkflowType> scheduled = scheduledExternalWorkflows.remove(workflowId);
                     if (scheduled == null) {
@@ -128,7 +128,7 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
         this.workflowContext = workflowContext;
     }
 
-    @Override
+    
     public Promise<StartChildWorkflowReply> startChildWorkflow(final StartChildWorkflowExecutionParameters parameters) {
         final OpenRequestInfo<StartChildWorkflowReply, WorkflowType> context = new OpenRequestInfo<StartChildWorkflowReply, WorkflowType>();
         final StartChildWorkflowExecutionDecisionAttributes attributes = new StartChildWorkflowExecutionDecisionAttributes();
@@ -157,7 +157,7 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
         String taskName = "workflowId=" + workflowId + ", workflowType=" + attributes.getWorkflowType();
         new ExternalTask() {
 
-            @Override
+            
             protected ExternalTaskCancellationHandler doExecute(final ExternalTaskCompletionHandle handle) throws Throwable {
                 decisions.startChildWorkflowExecution(attributes);
                 context.setCompletionHandle(handle);
@@ -169,7 +169,7 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
         return context.getResult();
     }
 
-    @Override
+    
     public Promise<String> startChildWorkflow(String workflow, String version, String input) {
         StartChildWorkflowExecutionParameters parameters = new StartChildWorkflowExecutionParameters();
         parameters.setWorkflowType(new WorkflowType().withName(workflow).withVersion(version));
@@ -177,20 +177,20 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
         final Promise<StartChildWorkflowReply> started = startChildWorkflow(parameters);
         return new Functor<String>(started) {
 
-            @Override
+            
             protected Promise<String> doExecute() throws Throwable {
                 return started.get().getResult();
             }
         };
     }
 
-    @Override
+    
     public Promise<String> startChildWorkflow(final String workflow, final String version, final Promise<String> input) {
         final Settable<String> result = new Settable<String>();
 
         new Task(input) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 result.chain(startChildWorkflow(workflow, version, input.get()));
             }
@@ -198,7 +198,7 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
         return result;
     }
 
-    @Override
+    
     public Promise<Void> signalWorkflowExecution(final SignalExternalWorkflowParameters parameters) {
         final OpenRequestInfo<Void, Void> context = new OpenRequestInfo<Void, Void>();
         final SignalExternalWorkflowExecutionDecisionAttributes attributes = new SignalExternalWorkflowExecutionDecisionAttributes();
@@ -212,7 +212,7 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
                 + parameters.getRunId();
         new ExternalTask() {
 
-            @Override
+            
             protected ExternalTaskCancellationHandler doExecute(final ExternalTaskCompletionHandle handle) throws Throwable {
 
                 decisions.signalExternalWorkflowExecution(attributes);
@@ -221,7 +221,7 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
                 scheduledSignals.put(finalSignalId, context);
                 return new ExternalTaskCancellationHandler() {
 
-                    @Override
+                    
                     public void handleCancellation(Throwable cause) {
                         decisions.cancelSignalExternalWorkflowExecution(finalSignalId, null);
                         OpenRequestInfo<Void, Void> scheduled = scheduledSignals.remove(finalSignalId);
@@ -237,7 +237,7 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
         return context.getResult();
     }
 
-    @Override
+    
     public void requestCancelWorkflowExecution(WorkflowExecution execution) {
         RequestCancelExternalWorkflowExecutionDecisionAttributes attributes = new RequestCancelExternalWorkflowExecutionDecisionAttributes();
         String workflowId = execution.getWorkflowId();
@@ -248,13 +248,13 @@ class GenericWorkflowClientImpl implements GenericWorkflowClient {
         decisions.requestCancelExternalWorkflowExecution(childWorkflow, attributes, null);
     }
 
-    @Override
+    
     public void continueAsNewOnCompletion(ContinueAsNewWorkflowExecutionParameters continueParameters) {
         // TODO: add validation to check if continueAsNew is not set 
         workflowContext.setContinueAsNewOnCompletion(continueParameters);
     }
 
-    @Override
+    
     public String generateUniqueId() {
         WorkflowExecution workflowExecution = workflowContext.getWorkflowExecution();
         String runId = workflowExecution.getRunId();

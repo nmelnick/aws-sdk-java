@@ -29,7 +29,7 @@ class SpringWorkflowDefinitionFactoryFactory extends WorkflowDefinitionFactoryFa
 
     private final POJOWorkflowDefinitionFactoryFactory impl = new POJOWorkflowDefinitionFactoryFactory() {
 
-        @Override
+        
         protected POJOWorkflowImplementationFactory getImplementationFactory(Class<?> workflowImplementationType,
                 Class<?> workflowInteface, WorkflowType workflowType) {
             final Object instanceProxy = workflowImplementations.get(workflowImplementationType);
@@ -38,13 +38,13 @@ class SpringWorkflowDefinitionFactoryFactory extends WorkflowDefinitionFactoryFa
             }
             return new POJOWorkflowImplementationFactory() {
 
-                @Override
+                
                 public Object newInstance(DecisionContext decisionContext) throws Exception {
                     WorkflowScope.setDecisionContext(decisionContext);
                     return instanceProxy;
                 }
 
-                @Override
+                
                 public void deleteInstance(Object instance) {
                     WorkflowScope.removeDecisionContext();
                 }
@@ -56,12 +56,12 @@ class SpringWorkflowDefinitionFactoryFactory extends WorkflowDefinitionFactoryFa
 
     private final Map<Class<?>, Object> workflowImplementations = new HashMap<Class<?>, Object>();
 
-    @Override
+    
     public WorkflowDefinitionFactory getWorkflowDefinitionFactory(WorkflowType workflowType) {
         return impl.getWorkflowDefinitionFactory(workflowType);
     }
 
-    @Override
+    
     public Iterable<WorkflowType> getWorkflowTypesToRegister() {
         return impl.getWorkflowTypesToRegister();
     }

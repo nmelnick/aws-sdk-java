@@ -60,7 +60,7 @@ public class ActivityFailureException extends RuntimeException {
         return getMessage();
     }
 
-    @Override
+    
     public String toString() {
         return super.toString() + " : " + getDetails();
     }

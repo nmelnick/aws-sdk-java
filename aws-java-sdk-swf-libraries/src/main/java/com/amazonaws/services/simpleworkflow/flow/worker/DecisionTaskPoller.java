@@ -44,12 +44,12 @@ public class DecisionTaskPoller implements TaskPoller {
             next = firstDecisionTask = poll(null);
         }
 
-        @Override
+        
         public boolean hasNext() {
             return next != null;
         }
 
-        @Override
+        
         public DecisionTask next() {
             if (!hasNext()) {
                 throw new IllegalStateException("hasNext() == false");
@@ -68,7 +68,7 @@ public class DecisionTaskPoller implements TaskPoller {
             return result;
         }
 
-        @Override
+        
         public void remove() {
             throw new UnsupportedOperationException();
         }
@@ -189,7 +189,7 @@ public class DecisionTaskPoller implements TaskPoller {
      * @throws Exception
      * @throws DeciderConfigurationException
      */
-    @Override
+    
     public boolean pollAndProcessSingleTask() throws Exception {
         DecisionTaskIterator tasks = null;
         RespondDecisionTaskCompletedRequest taskCompletedRequest = null;
@@ -254,15 +254,15 @@ public class DecisionTaskPoller implements TaskPoller {
         }
     }
 
-    @Override
+    
     public void shutdown() {
     }
 
-    @Override
+    
     public void shutdownNow() {
     }
 
-    @Override
+    
     public boolean awaitTermination(long left, TimeUnit milliseconds) throws InterruptedException {
         //TODO: Waiting for all currently running pollAndProcessSingleTask to complete 
         return false;

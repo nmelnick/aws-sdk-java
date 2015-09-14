@@ -86,7 +86,7 @@ public class ActivityTypeRegistrationOptions {
         this.defaultTaskPriority = defaultTaskPriority;
     }
 
-    @Override
+    
     public String toString() {
         return "ActivityTypeRegistrationOptions [defaultTaskList=" + ((defaultTaskList != null) ? defaultTaskList.toString() : "null") 
         + ", description=" + description

@@ -174,7 +174,7 @@ public class SynchronousActivityTaskPoller implements TaskPoller {
      * @return true if task was polled and decided upon, false if poll timed out
      * @throws Exception
      */
-    @Override
+    
     public boolean pollAndProcessSingleTask() throws Exception {
         ActivityTask task = poll();
         if (task == null) {
@@ -231,7 +231,7 @@ public class SynchronousActivityTaskPoller implements TaskPoller {
         else {
             reportFailureRetrier.retry(new Runnable() {
 
-                @Override
+                
                 public void run() {
                     respondActivityTaskFailed(taskToken, reason, details);
                 }
@@ -254,7 +254,7 @@ public class SynchronousActivityTaskPoller implements TaskPoller {
         else {
             reportFailureRetrier.retry(new Runnable() {
 
-                @Override
+                
                 public void run() {
                     respondActivityTaskCanceled(taskToken, details);
                 }
@@ -276,7 +276,7 @@ public class SynchronousActivityTaskPoller implements TaskPoller {
         else {
             reportCompletionRetrier.retry(new Runnable() {
 
-                @Override
+                
                 public void run() {
                     respondActivityTaskCompleted(taskToken, output);
                 }
@@ -297,15 +297,15 @@ public class SynchronousActivityTaskPoller implements TaskPoller {
         }
     }
 
-    @Override
+    
     public void shutdown() {
     }
 
-    @Override
+    
     public void shutdownNow() {
     }
 
-    @Override
+    
     public boolean awaitTermination(long left, TimeUnit milliseconds) throws InterruptedException {
         //TODO: Waiting for all currently running pollAndProcessSingleTask to complete 
         return true;

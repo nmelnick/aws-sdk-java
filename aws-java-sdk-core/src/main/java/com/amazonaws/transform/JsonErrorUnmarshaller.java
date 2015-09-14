@@ -39,7 +39,7 @@ public class JsonErrorUnmarshaller extends AbstractErrorUnmarshaller<JSONObject>
         String message = parseMessage(json);
         String errorCode = parseErrorCode(json);
 
-        if ((null == message || message.isEmpty()) && (null == errorCode || errorCode.isEmpty())) {
+        if ((null == message || message.length() == 0) && (null == errorCode || errorCode.length() == 0)) {
             /**
              * Trigger the catch block in AmazonHttpClient.handleErrorResponse to handle 413 and 503 errors
              */

@@ -37,7 +37,7 @@ public final class AsyncTaskInfo {
         return waitingFor;
     }
 
-    @Override
+    
     public String toString() {
         StringBuilder result = new StringBuilder();
         if (name != null) {

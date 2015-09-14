@@ -42,7 +42,7 @@ public class ScheduleDecorator implements Decorator {
             this.object = object;
         }
 
-        @Override
+        
         public Object invoke(Object proxy, final Method method, final Object[] args) throws Throwable {
             try {
                 if (!isDecorated(method, args)) {
@@ -59,11 +59,11 @@ public class ScheduleDecorator implements Decorator {
 
                 Object r;
 
-                @Override
+                
                 protected void doTry() throws Throwable {
                     scheduledExecutor.execute(new AsyncRunnable() {
 
-                        @Override
+                        
                         public void run() throws Throwable {
                             try {
                                 r = method.invoke(object, args);
@@ -75,7 +75,7 @@ public class ScheduleDecorator implements Decorator {
                     });
                 }
 
-                @Override
+                
                 protected void doFinally() throws Throwable {
                     if (result != null) {
                         result.set(r);
@@ -98,14 +98,14 @@ public class ScheduleDecorator implements Decorator {
     }
     
     @SuppressWarnings("unchecked")
-    @Override
+    
     public final <V> V decorate(Class<V> interfaces, V object) {
         Class<?>[] interfazes = { interfaces };
         return (V) Proxy.newProxyInstance(object.getClass().getClassLoader(), interfazes, new DecoratorInvocationHandler(object));
     }
 
     @SuppressWarnings("unchecked")
-    @Override
+    
     public final <V> V decorate(Class<?>[] interfaces, V object) {
 
         return (V) Proxy.newProxyInstance(object.getClass().getClassLoader(), interfaces, new DecoratorInvocationHandler(object));

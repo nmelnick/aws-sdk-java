@@ -30,7 +30,7 @@ public class FlowSpringJUnit4ClassRunner extends SpringJUnit4ClassRunner {
         super(clazz);
     }
 
-    @Override
+    
     protected Statement withPotentialTimeout(final FrameworkMethod method, final Object test, Statement next) {
         Test annotation = method.getAnnotation(Test.class);
         long timeout = annotation.timeout();
@@ -43,7 +43,7 @@ public class FlowSpringJUnit4ClassRunner extends SpringJUnit4ClassRunner {
         return next;
     }
 
-    @Override
+    
     protected List<MethodRule> rules(Object test) {
         List<MethodRule> result = super.rules(test);
         for (MethodRule methodRule : result) {
@@ -61,7 +61,7 @@ public class FlowSpringJUnit4ClassRunner extends SpringJUnit4ClassRunner {
         return result;
     }
 
-    @Override
+    
     protected Statement possiblyExpectingExceptions(FrameworkMethod method, Object test, Statement next) {
         Test annotation = method.getAnnotation(Test.class);
         Class<? extends Throwable> expected = annotation.expected();

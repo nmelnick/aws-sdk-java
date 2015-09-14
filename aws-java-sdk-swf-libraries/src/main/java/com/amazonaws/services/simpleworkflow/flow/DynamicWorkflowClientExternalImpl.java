@@ -110,7 +110,7 @@ public class DynamicWorkflowClientExternalImpl implements DynamicWorkflowClientE
         this.workflowType = workflowType;
     }
 
-    @Override
+    
     public void terminateWorkflowExecution(String reason, String details, ChildPolicy childPolicy) {
         TerminateWorkflowExecutionParameters terminateParameters = new TerminateWorkflowExecutionParameters();
         terminateParameters.setReason(reason);
@@ -122,17 +122,17 @@ public class DynamicWorkflowClientExternalImpl implements DynamicWorkflowClientE
         genericClient.terminateWorkflowExecution(terminateParameters);
     }
 
-    @Override
+    
     public void requestCancelWorkflowExecution() {
         genericClient.requestCancelWorkflowExecution(workflowExecution);
     }
 
-    @Override
+    
     public void startWorkflowExecution(Object[] arguments) {
         startWorkflowExecution(arguments, null);
     }
 
-    @Override
+    
     public void startWorkflowExecution(Object[] arguments, StartWorkflowOptions startOptionsOverride) {
         if (workflowType == null) {
             throw new IllegalStateException("Required property workflowType is null");
@@ -154,7 +154,7 @@ public class DynamicWorkflowClientExternalImpl implements DynamicWorkflowClientE
         workflowExecution.setRunId(runId);
     }
 
-    @Override
+    
     public void signalWorkflowExecution(String signalName, Object[] arguments) {
         SignalExternalWorkflowParameters signalParameters = new SignalExternalWorkflowParameters();
         signalParameters.setRunId(workflowExecution.getRunId());
@@ -165,7 +165,7 @@ public class DynamicWorkflowClientExternalImpl implements DynamicWorkflowClientE
         genericClient.signalWorkflowExecution(signalParameters);
     }
 
-    @Override
+    
     public <T> T getWorkflowExecutionState(Class<T> returnType) throws Throwable {
         String state = genericClient.getWorkflowState(workflowExecution);
         if (state == null)

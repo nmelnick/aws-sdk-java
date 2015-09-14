@@ -43,7 +43,7 @@ public class ManualActivityCompletionClientFactoryImpl extends ManualActivityCom
         this.dataConverter = dataConverter;
     }
 
-    @Override
+    
     public ManualActivityCompletionClient getClient(String taskToken) {
         if (service == null) {
             throw new IllegalStateException("required property service is null");

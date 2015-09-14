@@ -79,7 +79,7 @@ public class ExponentialRetryParameters {
         this.minimumRetries = minimumRetries;
     }
 
-    @Override
+    
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -95,7 +95,7 @@ public class ExponentialRetryParameters {
     }
 
 
-    @Override
+    
     public boolean equals(Object obj) {
         if (this == obj)
             return true;

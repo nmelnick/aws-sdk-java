@@ -34,7 +34,7 @@ public class WorkflowTestStatement extends Statement {
         this.expectedException = expectedException;
     }
 
-    @Override
+    
     public void evaluate() throws Throwable {
         if (!flowTestRunner) {
             throw new IllegalStateException(
@@ -98,17 +98,17 @@ public class WorkflowTestStatement extends Statement {
         try {
             workflowTest.scope = new AsyncScope() {
 
-                @Override
+                
                 protected void doAsync() throws Throwable {
                     new TryCatchFinally() {
 
-                        @Override
+                        
                         protected void doTry() throws Throwable {
                             workflowTest.beforeEvaluate(workflowTest.decisionContext);
                             base.evaluate();
                         }
 
-                        @Override
+                        
                         protected void doCatch(Throwable e) throws Throwable {
                             if (e instanceof IllegalStateException) {
                                 if ("Called outside of the workflow definition code.".equals(e.getMessage())) {
@@ -121,7 +121,7 @@ public class WorkflowTestStatement extends Statement {
                             throw e;
                         }
 
-                        @Override
+                        
                         protected void doFinally() throws Throwable {
                             workflowTest.afterEvaluate();
                         }

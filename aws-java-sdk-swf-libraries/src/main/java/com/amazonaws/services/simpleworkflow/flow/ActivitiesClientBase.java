@@ -37,7 +37,7 @@ public abstract class ActivitiesClientBase implements ActivitiesClient {
         return dynamicActivitiesClient.scheduleActivity(activityType, arguments, optionsOverride, returnType, waitFor);
     }
 
-    @Override
+    
     public DataConverter getDataConverter() {
         return dynamicActivitiesClient.getDataConverter();
     }
@@ -46,7 +46,7 @@ public abstract class ActivitiesClientBase implements ActivitiesClient {
         dynamicActivitiesClient.setDataConverter(converter);
     }
 
-    @Override
+    
     public ActivitySchedulingOptions getSchedulingOptions() {
         return dynamicActivitiesClient.getSchedulingOptions();
     }
@@ -55,7 +55,7 @@ public abstract class ActivitiesClientBase implements ActivitiesClient {
         dynamicActivitiesClient.setSchedulingOptions(schedulingOptions);
     }
 
-    @Override
+    
     public GenericActivityClient getGenericClient() {
         return dynamicActivitiesClient.getGenericClient();
     }

@@ -61,7 +61,7 @@ class ActivityExecutionContextImpl extends ActivityExecutionContext {
      * @throws CancellationException
      * @see ActivityExecutionContext#recordActivityHeartbeat(int)
      */
-    @Override
+    
     public void recordActivityHeartbeat(String details) throws CancellationException {
         //TODO: call service with the specified minimal interval (through @ActivityExecutionOptions)
         // allowing more frequent calls of this method.
@@ -78,7 +78,7 @@ class ActivityExecutionContextImpl extends ActivityExecutionContext {
     /**
      * @see ActivityExecutionContext#getTask()
      */
-    @Override
+    
     public ActivityTask getTask() {
         return task;
     }
@@ -86,22 +86,22 @@ class ActivityExecutionContextImpl extends ActivityExecutionContext {
     /**
      * @see ActivityExecutionContext#getService()
      */
-    @Override
+    
     public AmazonSimpleWorkflow getService() {
         return service;
     }
 
-    @Override
+    
     public String getTaskToken() {
         return task.getTaskToken();
     }
 
-    @Override
+    
     public WorkflowExecution getWorkflowExecution() {
         return task.getWorkflowExecution();
     }
 
-    @Override
+    
     public String getDomain() {
         return domain;
     }

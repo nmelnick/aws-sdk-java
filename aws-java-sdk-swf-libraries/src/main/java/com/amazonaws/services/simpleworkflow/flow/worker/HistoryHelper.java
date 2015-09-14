@@ -53,12 +53,12 @@ class HistoryHelper {
             }
         }
 
-        @Override
+        
         public boolean hasNext() {
             return decisionTask != null && (index < events.size() || decisionTasks.hasNext());
         }
 
-        @Override
+        
         public HistoryEvent next() {
             if (index == events.size()) {
                 decisionTask = decisionTasks.next();
@@ -104,7 +104,7 @@ class HistoryHelper {
             }
         }
 
-        @Override
+        
         public void remove() {
             throw new UnsupportedOperationException();
         }

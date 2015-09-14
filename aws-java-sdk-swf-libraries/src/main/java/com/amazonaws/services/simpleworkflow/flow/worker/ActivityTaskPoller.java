@@ -38,7 +38,7 @@ public class ActivityTaskPoller extends SynchronousActivityTaskPoller {
 
     private UncaughtExceptionHandler uncaughtExceptionHandler = new UncaughtExceptionHandler() {
 
-        @Override
+        
         public void uncaughtException(Thread t, Throwable e) {
             log.error("Failure in thread " + t.getName(), e);
         }
@@ -66,7 +66,7 @@ public class ActivityTaskPoller extends SynchronousActivityTaskPoller {
      * @return true if task was polled and decided upon, false if poll timed out
      * @throws Exception
      */
-    @Override
+    
     public boolean pollAndProcessSingleTask() throws Exception {
         boolean semaphoreNeedsRelease = false;
         try {
@@ -86,7 +86,7 @@ public class ActivityTaskPoller extends SynchronousActivityTaskPoller {
             try {
                 taskExecutorService.execute(new Runnable() {
 
-                    @Override
+                    
                     public void run() {
                         try {
                             execute(task);
@@ -125,17 +125,17 @@ public class ActivityTaskPoller extends SynchronousActivityTaskPoller {
         return e2;
     }
 
-    @Override
+    
     public void shutdown() {
         taskExecutorService.shutdown();
     }
 
-    @Override
+    
     public void shutdownNow() {
         taskExecutorService.shutdownNow();
     }
 
-    @Override
+    
     public boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
         return taskExecutorService.awaitTermination(timeout, unit);
     }

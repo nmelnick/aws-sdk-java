@@ -199,7 +199,7 @@ public class ContinueAsNewWorkflowExecutionParameters {
         return continueAsNewWorkflowExecutionParameters;
     }
     
-    @Override
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");

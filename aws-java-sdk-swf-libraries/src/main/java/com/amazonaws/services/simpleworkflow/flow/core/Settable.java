@@ -85,7 +85,7 @@ public class Settable<V> extends Promise<V> {
      * @throws IllegalStateException
      *             If set() is never called for this instance of Settable
      */
-    @Override
+    
     public V get() {
         if (!ready) {
             throw new IllegalStateException("not ready");
@@ -96,7 +96,7 @@ public class Settable<V> extends Promise<V> {
     /**
      * @return <code>true</code> if set() is called for this Settable
      */
-    @Override
+    
     public boolean isReady() {
         return ready;
     }
@@ -149,7 +149,7 @@ public class Settable<V> extends Promise<V> {
         }
         chainCallback = new Runnable() {
 
-            @Override
+            
             public void run() {
                 set(chainTo.get());
             }
@@ -193,12 +193,12 @@ public class Settable<V> extends Promise<V> {
         }
     }
 
-    @Override
+    
     protected void removeCallback(Runnable callback) {
         callbacks.remove(callback);
     }
 
-    @Override
+    
     public String getDescription() {
         if (description == null && chainedTo != null) {
             return chainedTo.getDescription();
@@ -215,7 +215,7 @@ public class Settable<V> extends Promise<V> {
         this.description = description;
     }
 
-    @Override
+    
     public String toString() {
         return "Settable [value=" + value + ", ready=" + ready + "]";
     }

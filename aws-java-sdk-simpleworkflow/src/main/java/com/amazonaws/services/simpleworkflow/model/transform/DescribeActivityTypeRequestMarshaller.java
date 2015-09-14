@@ -82,7 +82,7 @@ public class DescribeActivityTypeRequestMarshaller implements Marshaller<Request
           jsonWriter.endObject();
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes(UTF8);
+          byte[] content = snippet.getBytes();
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
           request.addHeader("Content-Type", "application/x-amz-json-1.0");

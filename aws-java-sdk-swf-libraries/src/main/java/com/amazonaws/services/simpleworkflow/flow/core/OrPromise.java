@@ -22,7 +22,7 @@ public class OrPromise extends Promise<Void> {
 
     private final class OrPromiseCallback implements Runnable {
 
-        @Override
+        
         public void run() {
             if (!impl.isReady()) {
                 impl.set(null);
@@ -51,22 +51,22 @@ public class OrPromise extends Promise<Void> {
         return values;
     }
 
-    @Override
+    
     protected void addCallback(Runnable callback) {
         impl.addCallback(callback);
     }
 
-    @Override
+    
     public Void get() {
         return impl.get();
     }
 
-    @Override
+    
     public boolean isReady() {
         return impl.isReady();
     }
 
-    @Override
+    
     protected void removeCallback(Runnable callback) {
         impl.removeCallback(callback);
     }

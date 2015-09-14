@@ -115,8 +115,21 @@ class HttpClientFactory {
             Scheme http = new Scheme("http", 80, PlainSocketFactory.getSocketFactory());
             SSLSocketFactory sf = config.getApacheHttpClientConfig().getSslSocketFactory();
             if (sf == null) {
+                SSLContext defaultContext = null;
+                try {
+                    defaultContext = SSLContext.getInstance("Default");
+                } catch (NoSuchAlgorithmException e) {
+                    defaultContext = SSLContext.getInstance("TLS");
+                    try {
+                        defaultContext.init(null, null, null);
+                    } catch (Exception ee) {
+                        throw new AmazonClientException("Unable to access default SSL context", ee);
+                    }
+                } catch (Exception e) {
+                    throw new AmazonClientException("Unable to access default SSL context", e);
+                }
                 sf = new SdkTLSSocketFactory(
-                        SSLContext.getDefault(),
+                        defaultContext,
                         SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
             }
             Scheme https = new Scheme("https", 443, sf);

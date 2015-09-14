@@ -58,12 +58,12 @@ public class POJOWorkflowDefinitionFactoryFactory extends WorkflowDefinitionFact
         this.converter = converter;
     }
 
-    @Override
+    
     public WorkflowDefinitionFactory getWorkflowDefinitionFactory(WorkflowType workflowType) {
         return factories.get(workflowType);
     }
 
-    @Override
+    
     public Iterable<WorkflowType> getWorkflowTypesToRegister() {
         return workflowTypesToRegister;
     }
@@ -221,12 +221,12 @@ public class POJOWorkflowDefinitionFactoryFactory extends WorkflowDefinitionFact
             Class<?> workflowInteface, WorkflowType workflowType) {
         return new POJOWorkflowImplementationFactory() {
 
-            @Override
+            
             public Object newInstance(DecisionContext decisionContext) throws Exception {
                 return workflowImplementationType.newInstance();
             }
 
-            @Override
+            
             public void deleteInstance(Object instance) {
             }
         };

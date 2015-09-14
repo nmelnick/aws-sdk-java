@@ -136,11 +136,11 @@ public abstract class WorkflowTestBase implements MethodRule {
         this.clockAcceleration = clockAcceleration;
     }
 
-    @Override
+    
     public Statement apply(final Statement base, FrameworkMethod method, Object target) {
         Callable<WorkflowTestBase> accessor = new Callable<WorkflowTestBase>() {
 
-            @Override
+            
             public WorkflowTestBase call() throws Exception {
                 return WorkflowTestBase.this;
             }
@@ -164,7 +164,7 @@ public abstract class WorkflowTestBase implements MethodRule {
         final Settable<Void> result = new Settable<Void>();
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 waits.add(result);
             }
@@ -184,7 +184,7 @@ public abstract class WorkflowTestBase implements MethodRule {
     public void clockAdvanceSeconds(final long seconds, Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 workflowClock.advanceSeconds(seconds);
             }

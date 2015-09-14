@@ -33,7 +33,7 @@ class AsynchronousAspectTask extends Task {
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-	@Override
+	
     protected void doExecute() throws Throwable {
         Object result = pjp.proceed();
         if (result != null && !(result instanceof Promise)) {

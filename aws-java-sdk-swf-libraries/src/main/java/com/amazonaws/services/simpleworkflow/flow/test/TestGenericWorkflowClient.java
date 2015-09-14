@@ -60,12 +60,12 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
             this.runId = runId;
         }
 
-        @Override
+        
         public String getRunId() {
             return runId;
         }
 
-        @Override
+        
         public Promise<String> getResult() {
             return result;
         }
@@ -102,12 +102,12 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
             this.result = result;
         }
 
-        @Override
+        
         protected void doTry() throws Throwable {
             executeResult.chain(childWorkflowDefinition.execute(parameters.getInput()));
         }
 
-        @Override
+        
         protected void doCatch(Throwable e) throws Throwable {
             failed = true;
             if (e instanceof WorkflowException) {
@@ -125,7 +125,7 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
             throw failure;
         }
 
-        @Override
+        
         protected void doFinally() throws Throwable {
             if (!failed) {
                 continueAsNew.set(childContext.getWorkflowContext().getContinueAsNewOnCompletion());
@@ -145,7 +145,7 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
             }
             new Task(this) {
 
-                @Override
+                
                 protected void doExecute() throws Throwable {
                     childWorkflowDefinition.signalRecieved(signalName, details);
                 }
@@ -206,7 +206,7 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
         this.decisionContextProvider = decisionContextProvider;
     }
 
-    @Override
+    
     public Promise<StartChildWorkflowReply> startChildWorkflow(final StartChildWorkflowExecutionParameters parameters) {
         Settable<StartChildWorkflowReply> reply = new Settable<StartChildWorkflowReply>();
         Settable<String> result = new Settable<String>();
@@ -282,7 +282,7 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
         final Promise<ContinueAsNewWorkflowExecutionParameters> continueAsNew = tryCatch.getContinueAsNew();
         new Task(continueAsNew) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 ContinueAsNewWorkflowExecutionParameters cp = continueAsNew.get();
                 if (cp == null) {
@@ -314,7 +314,7 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
         };
     }
 
-    @Override
+    
     public Promise<String> startChildWorkflow(String workflow, String version, String input) {
         StartChildWorkflowExecutionParameters parameters = new StartChildWorkflowExecutionParameters();
         WorkflowType workflowType = new WorkflowType().withName(workflow).withVersion(version);
@@ -326,18 +326,18 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
         return result;
     }
 
-    @Override
+    
     public Promise<String> startChildWorkflow(final String workflow, final String version, final Promise<String> input) {
         return new Functor<String>(input) {
 
-            @Override
+            
             protected Promise<String> doExecute() throws Throwable {
                 return startChildWorkflow(workflow, version, input.get());
             }
         };
     }
 
-    @Override
+    
     public Promise<Void> signalWorkflowExecution(final SignalExternalWorkflowParameters signalParameters) {
         WorkflowExecution signaledExecution = new WorkflowExecution();
         signaledExecution.setWorkflowId(signalParameters.getWorkflowId());
@@ -354,7 +354,7 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
         return Promise.Void();
     }
 
-    @Override
+    
     public void requestCancelWorkflowExecution(WorkflowExecution execution) {
         String workflowId = execution.getWorkflowId();
         if (workflowId == null) {
@@ -387,13 +387,13 @@ public class TestGenericWorkflowClient implements GenericWorkflowClient {
         return childTryCatch.getWorkflowState();
     }
 
-    @Override
+    
     public void continueAsNewOnCompletion(ContinueAsNewWorkflowExecutionParameters parameters) {
         DecisionContext decisionContext = decisionContextProvider.getDecisionContext();
         decisionContext.getWorkflowContext().setContinueAsNewOnCompletion(parameters);
     }
 
-    @Override
+    
     public String generateUniqueId() {
         return UUID.randomUUID().toString();
     }

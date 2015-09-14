@@ -50,7 +50,7 @@ public class DynamicActivitiesClientImpl implements DynamicActivitiesClient {
 
     }
 
-    @Override
+    
     public DataConverter getDataConverter() {
         return dataConverter;
     }
@@ -59,7 +59,7 @@ public class DynamicActivitiesClientImpl implements DynamicActivitiesClient {
         this.dataConverter = dataConverter;
     }
 
-    @Override
+    
     public ActivitySchedulingOptions getSchedulingOptions() {
         return schedulingOptions;
     }
@@ -68,7 +68,7 @@ public class DynamicActivitiesClientImpl implements DynamicActivitiesClient {
         this.schedulingOptions = schedulingOptions;
     }
 
-    @Override
+    
     public GenericActivityClient getGenericClient() {
         return genericClient;
     }
@@ -81,7 +81,7 @@ public class DynamicActivitiesClientImpl implements DynamicActivitiesClient {
             final ActivitySchedulingOptions optionsOverride, final Class<T> returnType, final Promise<?>... waitFor) {
         return new Functor<T>(arguments) {
 
-            @Override
+            
             protected Promise<T> doExecute() throws Throwable {
                 Object[] input = new Object[arguments.length];
                 for (int i = 0; i < arguments.length; i++) {
@@ -102,7 +102,7 @@ public class DynamicActivitiesClientImpl implements DynamicActivitiesClient {
 
             Promise<String> stringOutput;
 
-            @Override
+            
             protected void doTry() throws Throwable {
                 ExecuteActivityParameters parameters = new ExecuteActivityParameters();
                 parameters.setActivityType(activityType);
@@ -121,7 +121,7 @@ public class DynamicActivitiesClientImpl implements DynamicActivitiesClient {
                 result.setDescription(stringOutput.getDescription());
             }
 
-            @Override
+            
             protected void doCatch(Throwable e) throws Throwable {
                 if (e instanceof ActivityTaskFailedException) {
                     ActivityTaskFailedException taskFailedException = (ActivityTaskFailedException) e;
@@ -145,7 +145,7 @@ public class DynamicActivitiesClientImpl implements DynamicActivitiesClient {
                 throw e;
             }
 
-            @Override
+            
             protected void doFinally() throws Throwable {
                 if (stringOutput != null && stringOutput.isReady()) {
                     if (returnType.equals(Void.class)) {

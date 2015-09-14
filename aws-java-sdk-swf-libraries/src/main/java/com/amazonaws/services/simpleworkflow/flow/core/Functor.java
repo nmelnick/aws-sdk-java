@@ -21,7 +21,7 @@ public abstract class Functor<T> extends Promise<T> {
     public Functor(Promise<?>... waitFor) {
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 result.chain(Functor.this.doExecute());
             }
@@ -30,22 +30,22 @@ public abstract class Functor<T> extends Promise<T> {
 
     protected abstract Promise<T> doExecute() throws Throwable;
 
-    @Override
+    
     public T get() {
         return result.get();
     }
 
-    @Override
+    
     public boolean isReady() {
         return result.isReady();
     }
 
-    @Override
+    
     protected void addCallback(Runnable callback) {
         result.addCallback(callback);
     }
 
-    @Override
+    
     protected void removeCallback(Runnable callback) {
         result.removeCallback(callback);
     }

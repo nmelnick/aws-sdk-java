@@ -50,7 +50,7 @@ class POJOActivityImplementation extends ActivityImplementationBase {
         this.converter = converter;
     }
 
-    @Override
+    
     protected String execute(String input, ActivityExecutionContext context) 
             throws ActivityFailureException, CancellationException {
         //TODO: Support ability to call activity using old client 
@@ -79,12 +79,12 @@ class POJOActivityImplementation extends ActivityImplementationBase {
         return converter.toData(result);
     }
 
-    @Override
+    
     public ActivityTypeRegistrationOptions getRegistrationOptions() {
         return registrationOptions;
     }
 
-    @Override
+    
     public ActivityTypeExecutionOptions getExecutionOptions() {
         return executionOptions;
     }

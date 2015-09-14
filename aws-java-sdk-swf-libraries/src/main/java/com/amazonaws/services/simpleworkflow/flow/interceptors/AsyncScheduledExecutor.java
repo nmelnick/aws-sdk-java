@@ -45,13 +45,13 @@ public class AsyncScheduledExecutor implements AsyncExecutor {
 
             private Date lastInvocationTime;
 
-            @Override
+            
             protected void doTry() throws Throwable {
                 lastInvocationTime = new Date(clock.currentTimeMillis());
                 command.run();
             }
 
-            @Override
+            
             protected void doFinally() throws Throwable {
                 // It is common mistake to recurse from doFinally or doCatch.
                 // As code in doFinally and in doCatch is non cancelable it 
@@ -61,7 +61,7 @@ public class AsyncScheduledExecutor implements AsyncExecutor {
             }
         };
         new Task(invoked) {
-            @Override
+            
             protected void doExecute() throws Throwable {
                 scheduleNext(command, startTime, pastInvocationsCount + 1, invoked);
             }

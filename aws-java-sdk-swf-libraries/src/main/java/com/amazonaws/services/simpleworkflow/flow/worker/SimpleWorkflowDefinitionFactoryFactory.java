@@ -31,12 +31,12 @@ public class SimpleWorkflowDefinitionFactoryFactory extends WorkflowDefinitionFa
 
     private final List<WorkflowType> typesToRegister = new ArrayList<WorkflowType>();
 
-    @Override
+    
     public WorkflowDefinitionFactory getWorkflowDefinitionFactory(WorkflowType workflowType) {
         return factoriesMap.get(workflowType);
     }
 
-    @Override
+    
     public Iterable<WorkflowType> getWorkflowTypesToRegister() {
         return typesToRegister;
     }

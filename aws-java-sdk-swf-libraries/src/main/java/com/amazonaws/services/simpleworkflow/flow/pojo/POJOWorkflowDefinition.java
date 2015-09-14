@@ -52,7 +52,7 @@ public class POJOWorkflowDefinition extends WorkflowDefinition {
         this.context = context;
     }
 
-    @Override
+    
     public Promise<String> execute(final String input) throws WorkflowException {
         final DataConverter c;
         if (workflowMethod.getConverter() == null) {
@@ -65,7 +65,7 @@ public class POJOWorkflowDefinition extends WorkflowDefinition {
         final AtomicReference<Promise> methodResult = new AtomicReference<Promise>();
         new TryCatchFinally() {
 
-            @Override
+            
             protected void doTry() throws Throwable {
                 //TODO: Support ability to call workflow using old client 
                 // after new parameters were added to @Execute method
@@ -79,14 +79,14 @@ public class POJOWorkflowDefinition extends WorkflowDefinition {
                 }
             }
 
-            @Override
+            
             protected void doCatch(Throwable e) throws Throwable {
                 if (!(e instanceof CancellationException) || !context.getWorkflowContext().isCancelRequested()) {
                     throwWorkflowException(c, e);
                 }
             }
 
-            @Override
+            
             protected void doFinally() throws Throwable {
                 Promise r = methodResult.get();
                 if (r == null || r.isReady()) {
@@ -99,7 +99,7 @@ public class POJOWorkflowDefinition extends WorkflowDefinition {
         return result;
     }
 
-    @Override
+    
     public void signalRecieved(String signalName, String details) throws WorkflowException {
         MethodConverterPair signalMethod = signals.get(signalName);
         if (signalMethod != null) {
@@ -122,7 +122,7 @@ public class POJOWorkflowDefinition extends WorkflowDefinition {
         }
     }
 
-    @Override
+    
     public String getWorkflowState() throws WorkflowException {
         if (getStateMethod == null) {
             return null;

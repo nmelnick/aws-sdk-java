@@ -43,7 +43,7 @@ public class GenericWorkflowClientExternalImpl implements GenericWorkflowClientE
         this.domain = domain;
     }
 
-    @Override
+    
     public WorkflowExecution startWorkflow(StartWorkflowExecutionParameters startParameters) {
         StartWorkflowExecutionRequest request = new StartWorkflowExecutionRequest();
         request.setDomain(domain);
@@ -66,7 +66,7 @@ public class GenericWorkflowClientExternalImpl implements GenericWorkflowClientE
         return execution;
     }
 
-    @Override
+    
     public void signalWorkflowExecution(SignalExternalWorkflowParameters signalParameters) {
         SignalWorkflowExecutionRequest request = new SignalWorkflowExecutionRequest();
         request.setDomain(domain);
@@ -79,7 +79,7 @@ public class GenericWorkflowClientExternalImpl implements GenericWorkflowClientE
         service.signalWorkflowExecution(request);
     }
 
-    @Override
+    
     public void requestCancelWorkflowExecution(WorkflowExecution execution) {
         RequestCancelWorkflowExecutionRequest request = new RequestCancelWorkflowExecutionRequest();
         request.setDomain(domain);
@@ -90,13 +90,13 @@ public class GenericWorkflowClientExternalImpl implements GenericWorkflowClientE
         service.requestCancelWorkflowExecution(request);
     }
 
-    @Override
+    
     public String generateUniqueId() {
         String workflowId = UUID.randomUUID().toString();
         return workflowId;
     }
 
-    @Override
+    
     public String getWorkflowState(WorkflowExecution execution) {
         DescribeWorkflowExecutionRequest request = new DescribeWorkflowExecutionRequest();
         request.setDomain(domain);
@@ -105,7 +105,7 @@ public class GenericWorkflowClientExternalImpl implements GenericWorkflowClientE
         return details.getLatestExecutionContext();
     }
 
-    @Override
+    
     public void terminateWorkflowExecution(TerminateWorkflowExecutionParameters terminateParameters) {
         TerminateWorkflowExecutionRequest request = new TerminateWorkflowExecutionRequest();
         WorkflowExecution workflowExecution = terminateParameters.getWorkflowExecution();

@@ -50,12 +50,12 @@ abstract class DecisionStateMachineBase implements DecisionStateMachine {
         return id;
     }
 
-    @Override
+    
     public boolean isDone() {
         return state == DecisionState.COMPLETED || state == DecisionState.COMPLETED_AFTER_CANCELLATION_DECISION_SENT;
     }
 
-    @Override
+    
     public void handleDecisionTaskStartedEvent() {
         switch (state) {
         case CREATED:
@@ -66,7 +66,7 @@ abstract class DecisionStateMachineBase implements DecisionStateMachine {
         }
     }
 
-    @Override
+    
     public void cancel(Runnable immediateCancellationCallback) {
         stateHistory.add("cancel");
         switch (state) {
@@ -88,7 +88,7 @@ abstract class DecisionStateMachineBase implements DecisionStateMachine {
         stateHistory.add(state.toString());
     }
 
-    @Override
+    
     public void handleInitiatedEvent(HistoryEvent event) {
         stateHistory.add("handleInitiatedEvent");
         switch (state) {
@@ -105,7 +105,7 @@ abstract class DecisionStateMachineBase implements DecisionStateMachine {
 
     }
 
-    @Override
+    
     public void handleInitiationFailedEvent(HistoryEvent event) {
         stateHistory.add("handleInitiationFailedEvent");
         switch (state) {
@@ -120,12 +120,12 @@ abstract class DecisionStateMachineBase implements DecisionStateMachine {
 
     }
 
-    @Override
+    
     public void handleStartedEvent(HistoryEvent event) {
         stateHistory.add("handleStartedEvent");
     }
 
-    @Override
+    
     public void handleCompletionEvent() {
         stateHistory.add("handleCompletionEvent");
         switch (state) {
@@ -142,7 +142,7 @@ abstract class DecisionStateMachineBase implements DecisionStateMachine {
         stateHistory.add(state.toString());
     }
 
-    @Override
+    
     public void handleCancellationInitiatedEvent() {
         stateHistory.add("handleCancellationInitiatedEvent");
         switch (state) {
@@ -156,7 +156,7 @@ abstract class DecisionStateMachineBase implements DecisionStateMachine {
 
     }
 
-    @Override
+    
     public void handleCancellationFailureEvent(HistoryEvent event) {
         stateHistory.add("handleCancellationFailureEvent");
         switch (state) {
@@ -169,7 +169,7 @@ abstract class DecisionStateMachineBase implements DecisionStateMachine {
         stateHistory.add(state.toString());
     }
 
-    @Override
+    
     public void handleCancellationEvent() {
         stateHistory.add("handleCancellationEvent");
         switch (state) {
@@ -183,7 +183,7 @@ abstract class DecisionStateMachineBase implements DecisionStateMachine {
 
     }
 
-    @Override
+    
     public String toString() {
         return "DecisionStateMachineBase [id=" + id + ", state=" + state + ", isDone()=" + isDone() + ", stateHistory="
                 + stateHistory + "]";

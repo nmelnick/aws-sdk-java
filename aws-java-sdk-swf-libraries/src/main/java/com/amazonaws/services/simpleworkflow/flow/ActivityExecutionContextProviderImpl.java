@@ -24,7 +24,7 @@ import com.amazonaws.services.simpleworkflow.flow.worker.CurrentActivityExecutio
  */
 public class ActivityExecutionContextProviderImpl implements ActivityExecutionContextProvider {
 
-    @Override
+    
     public ActivityExecutionContext getActivityExecutionContext() {
         return CurrentActivityExecutionContext.get();
     }

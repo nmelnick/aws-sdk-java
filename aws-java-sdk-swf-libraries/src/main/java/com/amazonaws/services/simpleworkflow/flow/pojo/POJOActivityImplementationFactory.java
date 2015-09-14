@@ -254,12 +254,12 @@ public class POJOActivityImplementationFactory extends ActivityImplementationFac
 
     }
 
-    @Override
+    
     public Iterable<ActivityType> getActivityTypesToRegister() {
         return activityTypesToRegister;
     }
 
-    @Override
+    
     public ActivityImplementation getActivityImplementation(ActivityType activityType) {
         return implementationsMap.get(activityType);
     }

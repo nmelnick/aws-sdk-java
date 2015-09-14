@@ -24,7 +24,7 @@ public class AsyncRetryingExecutor implements AsyncExecutor {
         this.clock = clock;
     }
 
-    @Override
+    
     public void execute(AsyncRunnable command) throws Throwable {
         scheduleWithRetry(command, null, 1, clock.currentTimeMillis(), 0);
     }
@@ -49,7 +49,7 @@ public class AsyncRetryingExecutor implements AsyncExecutor {
             Promise<Void> timer = clock.createTimer(delay);
             new Task(timer) {
 
-                @Override
+                
                 protected void doExecute() throws Throwable {
                     invoke(command, attempt, firstAttemptTime);
                 }
@@ -68,12 +68,12 @@ public class AsyncRetryingExecutor implements AsyncExecutor {
 
             Throwable failureToRetry = null;
 
-            @Override
+            
             protected void doTry() throws Throwable {
                 command.run();
             }
 
-            @Override
+            
             protected void doCatch(Throwable failure) throws Throwable {
                 if (failure instanceof CancellationException) {
                     throw failure;
@@ -81,7 +81,7 @@ public class AsyncRetryingExecutor implements AsyncExecutor {
                 failureToRetry = failure;
             }
 
-            @Override
+            
             protected void doFinally() throws Throwable {
                 shouldRetry.set(failureToRetry);
             }
@@ -89,7 +89,7 @@ public class AsyncRetryingExecutor implements AsyncExecutor {
 
         new Task(shouldRetry) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Throwable failure = shouldRetry.get();
                 if (failure != null) {

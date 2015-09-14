@@ -49,7 +49,7 @@ public class WorkflowScope implements Scope, ApplicationContextAware {
     
     private static WorkflowExecutionLocal<Map<String, Object>> objects = new WorkflowExecutionLocal<Map<String, Object>>() {
 
-        @Override
+        
         protected Map<String, Object> initialValue() {
             return new HashMap<String, Object>();
         }
@@ -57,7 +57,7 @@ public class WorkflowScope implements Scope, ApplicationContextAware {
 
     private static WorkflowExecutionLocal<List<Runnable>> destructionCallbacks = new WorkflowExecutionLocal<List<Runnable>>() {
 
-        @Override
+        
         protected List<Runnable> initialValue() {
             return new ArrayList<Runnable>();
         }
@@ -81,7 +81,7 @@ public class WorkflowScope implements Scope, ApplicationContextAware {
         CurrentDecisionContext.unset();
     }
     
-    @Override
+    
     public Object get(String name, ObjectFactory<?> objectFactory) {
         Map<String, Object> map = objects.get();
         Object result = map.get(name);
@@ -99,29 +99,29 @@ public class WorkflowScope implements Scope, ApplicationContextAware {
 
     
     
-    @Override
+    
     public String getConversationId() {
         return contextProvider.getDecisionContext().getWorkflowContext().getWorkflowExecution().getRunId();
     }
 
-    @Override
+    
     public void registerDestructionCallback(String name, Runnable callback) {
         destructionCallbacks.get().add(callback);
     }
 
-    @Override
+    
     public Object remove(String name) {
         Map<String, Object> map = objects.get();
         return map.remove(name);
     }
 
-    @Override
+    
     public Object resolveContextualObject(String name) {
         //TODO: Understand why WorkflowScopeBeans cannot be returned from this method
         return null;
     }
 
-    @Override
+    
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         AutowireCapableBeanFactory autowireCapableBeanFactory = applicationContext.getAutowireCapableBeanFactory();
         if (!(autowireCapableBeanFactory instanceof DefaultListableBeanFactory)) {

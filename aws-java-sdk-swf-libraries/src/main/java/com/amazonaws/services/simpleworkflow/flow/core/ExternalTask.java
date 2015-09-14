@@ -54,7 +54,7 @@ public abstract class ExternalTask extends AsyncContextAware {
         return context.getStackTrace().getStackTrace();
     }
 
-    @Override
+    
     AsyncParentContext getContext() {
         return context;
     }

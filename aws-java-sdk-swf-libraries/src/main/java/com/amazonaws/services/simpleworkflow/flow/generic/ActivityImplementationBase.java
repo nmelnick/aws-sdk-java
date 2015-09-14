@@ -39,14 +39,14 @@ public abstract class ActivityImplementationBase extends ActivityImplementation 
     /**
      * @see ActivityImplementation#execute(ActivityExecutionContext)
      */
-    @Override
+    
     public String execute(ActivityExecutionContext context) 
             throws ActivityFailureException, CancellationException {
         ActivityTask task = context.getTask();
         return execute(task.getInput(), context);
     }
 
-    @Override
+    
     public ActivityTypeExecutionOptions getExecutionOptions() {
         return new ActivityTypeExecutionOptions();
     }
@@ -54,7 +54,7 @@ public abstract class ActivityImplementationBase extends ActivityImplementation 
     /**
      * By default do not register
      */
-    @Override
+    
     public ActivityTypeRegistrationOptions getRegistrationOptions() {
         return null;
     }

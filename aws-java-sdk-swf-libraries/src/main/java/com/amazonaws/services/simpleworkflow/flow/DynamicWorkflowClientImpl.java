@@ -80,32 +80,32 @@ public class DynamicWorkflowClientImpl implements DynamicWorkflowClient {
         }
     }
 
-    @Override
+    
     public DataConverter getDataConverter() {
         return dataConverter;
     }
 
-    @Override
+    
     public StartWorkflowOptions getSchedulingOptions() {
         return schedulingOptions;
     }
 
-    @Override
+    
     public GenericWorkflowClient getGenericClient() {
         return genericClient;
     }
 
-    @Override
+    
     public Promise<String> getRunId() {
         return runId;
     }
 
-    @Override
+    
     public WorkflowExecution getWorkflowExecution() {
         return workflowExecution;
     }
 
-    @Override
+    
     public WorkflowType getWorkflowType() {
         return workflowType;
     }
@@ -126,12 +126,12 @@ public class DynamicWorkflowClientImpl implements DynamicWorkflowClient {
         this.dataConverter = dataConverter;
     }
 
-    @Override
+    
     public void requestCancelWorkflowExecution(Promise<?>... waitFor) {
         checkWorkflowExecution();
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 GenericWorkflowClient client = getGenericClientToUse();
                 client.requestCancelWorkflowExecution(workflowExecution);
@@ -153,7 +153,7 @@ public class DynamicWorkflowClientImpl implements DynamicWorkflowClient {
         }
         return new Functor<T>(arguments) {
 
-            @Override
+            
             protected Promise<T> doExecute() throws Throwable {
                 Object[] input = new Object[arguments.length];
                 for (int i = 0; i < arguments.length; i++) {
@@ -177,7 +177,7 @@ public class DynamicWorkflowClientImpl implements DynamicWorkflowClient {
 
             Promise<StartChildWorkflowReply> reply;
 
-            @Override
+            
             protected void doTry() throws Throwable {
                 StartChildWorkflowExecutionParameters parameters = new StartChildWorkflowExecutionParameters();
                 parameters.setWorkflowType(workflowType);
@@ -192,7 +192,7 @@ public class DynamicWorkflowClientImpl implements DynamicWorkflowClient {
                 result.setDescription(reply.getDescription());
                 new Task(reply) {
 
-                    @Override
+                    
                     protected void doExecute() throws Throwable {
                         if (!runId.isReady()) {
                             runId.set(reply.get().getRunId());
@@ -203,7 +203,7 @@ public class DynamicWorkflowClientImpl implements DynamicWorkflowClient {
                 };
             }
 
-            @Override
+            
             protected void doCatch(Throwable e) throws Throwable {
                 if (e instanceof ChildWorkflowFailedException) {
                     ChildWorkflowFailedException taskFailedException = (ChildWorkflowFailedException) e;
@@ -227,7 +227,7 @@ public class DynamicWorkflowClientImpl implements DynamicWorkflowClient {
                 throw e;
             }
 
-            @Override
+            
             protected void doFinally() throws Throwable {
                 if (reply != null && reply.isReady() && reply.get().getResult().isReady()) {
                     if (returnType.equals(Void.class)) {
@@ -243,12 +243,12 @@ public class DynamicWorkflowClientImpl implements DynamicWorkflowClient {
         return result;
     }
 
-    @Override
+    
     public void signalWorkflowExecution(final String signalName, final Object[] arguments, Promise<?>... waitFor) {
         checkWorkflowExecution();
         new Task(waitFor) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 SignalExternalWorkflowParameters parameters = new SignalExternalWorkflowParameters();
                 parameters.setSignalName(signalName);

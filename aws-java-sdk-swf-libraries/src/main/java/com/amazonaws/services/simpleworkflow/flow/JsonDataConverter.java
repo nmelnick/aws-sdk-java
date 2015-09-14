@@ -66,7 +66,7 @@ public class JsonDataConverter extends DataConverter {
         this.mapper = mapper;
     }
 
-    @Override
+    
     public String toData(Object value) throws DataConverterException {
         try {
             return mapper.writeValueAsString(value);
@@ -90,7 +90,7 @@ public class JsonDataConverter extends DataConverter {
         throw new DataConverterException("Failure serializing \"" + value + "\" of type \"" + value.getClass() + "\"", e);
     }
 
-    @Override
+    
     public <T> T fromData(String serialized, Class<T> valueType) throws DataConverterException {
         try {
             return mapper.readValue(serialized, valueType);

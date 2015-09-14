@@ -145,12 +145,12 @@ public class SpringWorkflowTest extends WorkflowTestBase {
         return workflowClient.getWorkflowTypesToRegister();
     }
 
-    @Override
+    
     protected void beforeEvaluate(DecisionContext decisionContext) {
         WorkflowScope.setDecisionContext(decisionContext);
     }
 
-    @Override
+    
     protected void afterEvaluate() {
     }
 

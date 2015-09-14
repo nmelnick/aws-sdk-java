@@ -29,7 +29,7 @@ public class FixedIntervalInvocationSchedule implements InvocationSchedule {
         this.maxInvocationCount = Integer.MAX_VALUE;
     }
 
-    @Override
+    
     public long nextInvocationDelaySeconds(Date currentTime, Date startTime, Date lastInvocationTime, int pastInvocatonsCount) {
         if (pastInvocatonsCount >= maxInvocationCount) {
             return FlowConstants.NONE;

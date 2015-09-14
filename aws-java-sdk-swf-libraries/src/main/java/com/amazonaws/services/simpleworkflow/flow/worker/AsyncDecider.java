@@ -65,12 +65,12 @@ class AsyncDecider {
             this.attributes = event.getWorkflowExecutionStartedEventAttributes();
         }
 
-        @Override
+        
         protected void doAsync() throws Throwable {
             output = definition.execute(attributes.getInput());
         }
 
-        @Override
+        
         public Promise<String> getOutput() {
             return output;
         }
@@ -91,21 +91,21 @@ class AsyncDecider {
             this.cancellation = cancellation;
         }
 
-        @Override
+        
         protected void doAsync() throws Throwable {
         }
 
-        @Override
+        
         public Promise<String> getOutput() {
             return output;
         }
 
-        @Override
+        
         public boolean isCancelRequested() {
             return super.isCancelRequested() || cancellation;
         }
 
-        @Override
+        
         public Throwable getFailure() {
             Throwable result = super.getFailure();
             if (failure != null) {
@@ -114,7 +114,7 @@ class AsyncDecider {
             return result;
         }
 
-        @Override
+        
         public boolean eventLoop() throws Throwable {
             boolean completed = super.eventLoop();
             if (completed && failure != null) {
@@ -412,7 +412,7 @@ class AsyncDecider {
         // This task is attached to the root context of the workflowAsyncScope
         new Task(workflowAsyncScope) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 definition.signalRecieved(signalAttributes.getSignalName(), signalAttributes.getInput());
             }

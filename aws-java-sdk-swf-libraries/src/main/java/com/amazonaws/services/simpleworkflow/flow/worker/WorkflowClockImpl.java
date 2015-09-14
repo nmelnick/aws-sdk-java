@@ -46,11 +46,9 @@ class WorkflowClockImpl implements WorkflowClock {
             this.timerId = timerId;
         }
 
-        @Override
         public void handleCancellation(Throwable cause) {
             decisions.cancelTimer(timerId, new Runnable() {
 
-                @Override
                 public void run() {
                     OpenRequestInfo<?, ?> scheduled = scheduledTimers.remove(timerId);
                     ExternalTaskCompletionHandle context = scheduled.getCompletionHandle();
@@ -72,7 +70,6 @@ class WorkflowClockImpl implements WorkflowClock {
         this.decisions = decisions;
     }
 
-    @Override
     public long currentTimeMillis() {
         return replayCurrentTimeMilliseconds;
     }
@@ -81,7 +78,6 @@ class WorkflowClockImpl implements WorkflowClock {
         this.replayCurrentTimeMilliseconds = replayCurrentTimeMilliseconds;
     }
 
-    @Override
     public boolean isReplaying() {
         return replaying;
     }
@@ -90,12 +86,10 @@ class WorkflowClockImpl implements WorkflowClock {
         this.replaying = replaying;
     }
 
-    @Override
     public Promise<Void> createTimer(long delaySeconds) {
         return createTimer(delaySeconds, null);
     }
 
-    @Override
     public <T> Promise<T> createTimer(final long delaySeconds, final T userContext) {
         if (delaySeconds < 0) {
             throw new IllegalArgumentException("Negative delaySeconds: " + delaySeconds);
@@ -111,7 +105,6 @@ class WorkflowClockImpl implements WorkflowClock {
         String taskName = "timerId=" + timer.getTimerId() + ", delaySeconds=" + timer.getStartToFireTimeout();
         new ExternalTask() {
 
-            @Override
             protected ExternalTaskCancellationHandler doExecute(ExternalTaskCompletionHandle handle) throws Throwable {
 
                 decisions.startTimer(timer, userContext);

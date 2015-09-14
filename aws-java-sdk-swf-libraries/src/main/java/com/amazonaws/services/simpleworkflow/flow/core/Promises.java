@@ -34,7 +34,7 @@ public class Promises {
         AndPromise andPromise = new AndPromise((Collection)list);
         new Task(andPromise) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 List<T> extracted = new ArrayList<T>(list.size());
                 for (Promise<T> promise : list) {
@@ -53,7 +53,7 @@ public class Promises {
         AndPromise andPromise = new AndPromise((Collection) map.values());
         new Task(andPromise) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Map<K, V> extracted = new HashMap<K, V>(map.size());
                 for (Entry<K, Promise<V>> pair : map.entrySet()) {
@@ -71,7 +71,7 @@ public class Promises {
         AndPromise andPromise = new AndPromise((Collection) set);
         new Task(andPromise) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 Set<T> extracted = new HashSet<T>(set.size());
                 for (Promise<T> promise : set) {

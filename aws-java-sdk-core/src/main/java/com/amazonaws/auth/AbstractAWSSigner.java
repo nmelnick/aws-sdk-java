@@ -60,7 +60,7 @@ public abstract class AbstractAWSSigner implements Signer {
      */
     protected String signAndBase64Encode(String data, String key,
             SigningAlgorithm algorithm) throws AmazonClientException {
-        return signAndBase64Encode(data.getBytes(UTF8), key, algorithm);
+        return signAndBase64Encode(data.getBytes(), key, algorithm);
     }
 
     /**
@@ -70,7 +70,7 @@ public abstract class AbstractAWSSigner implements Signer {
     protected String signAndBase64Encode(byte[] data, String key,
             SigningAlgorithm algorithm) throws AmazonClientException {
         try {
-            byte[] signature = sign(data, key.getBytes(UTF8), algorithm);
+            byte[] signature = sign(data, key.getBytes(), algorithm);
             return Base64.encodeAsString(signature);
         } catch (Exception e) {
             throw new AmazonClientException(
@@ -82,7 +82,7 @@ public abstract class AbstractAWSSigner implements Signer {
     public byte[] sign(String stringData, byte[] key,
             SigningAlgorithm algorithm) throws AmazonClientException {
         try {
-            byte[] data = stringData.getBytes(UTF8);
+            byte[] data = stringData.getBytes();
             return sign(data, key, algorithm);
         } catch (Exception e) {
             throw new AmazonClientException(
@@ -93,7 +93,7 @@ public abstract class AbstractAWSSigner implements Signer {
 
     public byte[] signWithMac(String stringData, Mac mac) {
         try {
-            return mac.doFinal(stringData.getBytes(UTF8));
+            return mac.doFinal(stringData.getBytes());
         } catch (Exception e) {
             throw new AmazonClientException(
                     "Unable to calculate a request signature: "
@@ -133,7 +133,7 @@ public abstract class AbstractAWSSigner implements Signer {
     private static byte[] doHash(String text) throws AmazonClientException {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(text.getBytes(UTF8));
+            md.update(text.getBytes());
             return md.digest();
         } catch (Exception e) {
             throw new AmazonClientException(
@@ -245,7 +245,7 @@ public abstract class AbstractAWSSigner implements Signer {
             if (encodedParameters == null)
                 return new byte[0];
 
-            return encodedParameters.getBytes(UTF8);
+            return encodedParameters.getBytes();
         }
 
         return getBinaryRequestPayloadWithoutQueryParams(request);
@@ -315,7 +315,7 @@ public abstract class AbstractAWSSigner implements Signer {
                 return new ByteArrayInputStream(new byte[0]);
 
             return new ByteArrayInputStream(
-                    encodedParameters.getBytes(UTF8));
+                    encodedParameters.getBytes());
         }
 
         return getBinaryRequestPayloadStreamWithoutQueryParams(request);
@@ -341,7 +341,7 @@ public abstract class AbstractAWSSigner implements Signer {
     }
 
     protected String getCanonicalizedResourcePath(String resourcePath, boolean urlEncode) {
-        if (resourcePath == null || resourcePath.isEmpty()) {
+        if (resourcePath == null || resourcePath.length() == 0) {
             return "/";
         } else {
             String value = urlEncode ? SdkHttpUtils.urlEncode(resourcePath, true) : resourcePath;

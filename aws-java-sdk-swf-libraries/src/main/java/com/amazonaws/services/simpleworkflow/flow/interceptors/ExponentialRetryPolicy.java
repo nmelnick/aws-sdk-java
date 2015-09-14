@@ -111,7 +111,7 @@ public class ExponentialRetryPolicy extends RetryPolicyBase {
      * specified types are also included. Default is Throwable.class which means
      * retry any exceptions.
      */
-    @Override
+    
     public ExponentialRetryPolicy withExceptionsToRetry(Collection<Class<? extends Throwable>> exceptionsToRetry) {
         super.withExceptionsToRetry(exceptionsToRetry);
         return this;
@@ -121,13 +121,13 @@ public class ExponentialRetryPolicy extends RetryPolicyBase {
      * The exception types that should not be retried. Subclasses of the
      * specified types are also not retried. Default is empty list.
      */
-    @Override
+    
     public ExponentialRetryPolicy withExceptionsToExclude(Collection<Class<? extends Throwable>> exceptionsToRetry) {
         super.withExceptionsToExclude(exceptionsToRetry);
         return this;
     }
 
-    @Override
+    
     public long nextRetryDelaySeconds(Date firstAttempt, Date recordedFailure, int numberOfTries) {
 
         if (numberOfTries < 2) {

@@ -21,7 +21,7 @@ public class CronInvocationSchedule implements InvocationSchedule {
         this.expiration = expiration;
     }
 
-    @Override
+    
     public long nextInvocationDelaySeconds(Date currentTime, Date startTime, Date lastInvocationTime, int pastInvocatonsCount) {
         Date nextInvocationTime;
         if (lastInvocationTime == null) {

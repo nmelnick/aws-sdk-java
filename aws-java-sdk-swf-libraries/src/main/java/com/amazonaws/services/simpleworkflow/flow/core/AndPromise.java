@@ -30,7 +30,7 @@ public class AndPromise extends Promise<Void> {
             this.count = count;
         }
 
-        @Override
+        
         public void run() {
             if (--count == 0) {
                 impl.set(null);
@@ -71,22 +71,22 @@ public class AndPromise extends Promise<Void> {
         return values;
     }
 
-    @Override
+    
     protected void addCallback(Runnable callback) {
         impl.addCallback(callback);
     }
 
-    @Override
+    
     public Void get() {
         return impl.get();
     }
 
-    @Override
+    
     public boolean isReady() {
         return impl.isReady();
     }
 
-    @Override
+    
     protected void removeCallback(Runnable callback) {
         impl.removeCallback(callback);
     }

@@ -185,7 +185,7 @@ public class SpringActivityWorker implements WorkerBase, SmartLifecycle {
         genericWorker.resumePolling();
     }
     
-    @Override
+    
     public void start() {
         genericWorker.start();
     }
@@ -194,17 +194,17 @@ public class SpringActivityWorker implements WorkerBase, SmartLifecycle {
         genericWorker.shutdownNow();
     }
     
-    @Override
+    
     public void shutdown() {
         genericWorker.shutdown();
     }
 
-    @Override
+    
     public void shutdownNow() {
         genericWorker.shutdownNow();
     }
 
-    @Override
+    
     public boolean shutdownAndAwaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
         return genericWorker.shutdownAndAwaitTermination(timeout, unit);
     }
@@ -212,7 +212,7 @@ public class SpringActivityWorker implements WorkerBase, SmartLifecycle {
         return genericWorker.awaitTermination(timeout, unit);
     }
     
-    @Override
+    
     public void stop() {
         shutdown();
         try {
@@ -242,7 +242,7 @@ public class SpringActivityWorker implements WorkerBase, SmartLifecycle {
         return factory.addActivitiesImplementation(activitiesImplementation);
     }
 
-    @Override
+    
     public void registerTypesToPoll() {
         genericWorker.registerTypesToPoll();
     }
@@ -250,7 +250,7 @@ public class SpringActivityWorker implements WorkerBase, SmartLifecycle {
     /**
      * @return default is 0
      */
-    @Override
+    
     public int getPhase() {
         return startPhase;
     }
@@ -259,7 +259,7 @@ public class SpringActivityWorker implements WorkerBase, SmartLifecycle {
         this.startPhase = startPhase;
     }
     
-    @Override
+    
     public boolean isAutoStartup() {
         return !disableAutoStartup;
     }
@@ -280,23 +280,23 @@ public class SpringActivityWorker implements WorkerBase, SmartLifecycle {
         this.disableAutoStartup = disableAutoStartup;
     }
     
-    @Override
+    
     public void setDisableTypeRegistrationOnStart(boolean disableTypeRegistrationOnStart) {
         genericWorker.setDisableTypeRegistrationOnStart(disableTypeRegistrationOnStart);
     }
 
-    @Override
+    
     public boolean isDisableTypeRegistrationOnStart() {
         return genericWorker.isDisableTypeRegistrationOnStart();
     }
 
-    @Override
+    
     public void stop(Runnable callback) {
         stop();
         callback.run();
     }
 
-    @Override
+    
     public String toString() {
         return this.getClass().getSimpleName() + "[genericWorker=" + genericWorker + ", factory=" + factory + "]";
     }

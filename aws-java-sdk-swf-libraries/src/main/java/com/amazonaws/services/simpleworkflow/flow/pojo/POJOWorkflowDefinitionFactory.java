@@ -51,17 +51,17 @@ class POJOWorkflowDefinitionFactory extends WorkflowDefinitionFactory {
         this.getStateMethod = getStateMethod;
     }
 
-    @Override
+    
     public WorkflowType getWorkflowType() {
         return workflowType;
     }
 
-    @Override
+    
     public WorkflowTypeRegistrationOptions getWorkflowRegistrationOptions() {
         return registrationOptions;
     }
 
-    @Override
+    
     public WorkflowDefinition getWorkflowDefinition(DecisionContext context) throws Exception {
         if (implementationFactory == null) {
             return null;
@@ -72,7 +72,7 @@ class POJOWorkflowDefinitionFactory extends WorkflowDefinitionFactory {
                 converter, context);
     }
 
-    @Override
+    
     public void deleteWorkflowDefinition(WorkflowDefinition instance) {
         POJOWorkflowDefinition definition = (POJOWorkflowDefinition) instance;
         implementationFactory.deleteInstance(definition.getImplementationInstance());

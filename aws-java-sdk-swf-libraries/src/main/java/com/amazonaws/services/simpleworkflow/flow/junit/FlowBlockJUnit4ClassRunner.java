@@ -28,7 +28,7 @@ public class FlowBlockJUnit4ClassRunner extends BlockJUnit4ClassRunner {
         super(klass);
     }
 
-    @Override
+    
     protected Statement withPotentialTimeout(FrameworkMethod method, final Object test, Statement next) {
         Test annotation = method.getAnnotation(Test.class);
         timeout = annotation.timeout();
@@ -38,7 +38,7 @@ public class FlowBlockJUnit4ClassRunner extends BlockJUnit4ClassRunner {
         return next;
     }
 
-    @Override
+    
     protected List<MethodRule> rules(Object test) {
         List<MethodRule> result = super.rules(test);
         for (MethodRule methodRule : result) {
@@ -56,7 +56,7 @@ public class FlowBlockJUnit4ClassRunner extends BlockJUnit4ClassRunner {
         return result;
     }
 
-    @Override
+    
     protected Statement possiblyExpectingExceptions(FrameworkMethod method, Object test, Statement next) {
         Test annotation = method.getAnnotation(Test.class);
         Class<? extends Throwable> expected = annotation.expected();

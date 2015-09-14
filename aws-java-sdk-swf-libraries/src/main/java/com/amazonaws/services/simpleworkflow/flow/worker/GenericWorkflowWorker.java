@@ -62,17 +62,17 @@ public class GenericWorkflowWorker extends GenericWorker {
         return poller;
     }
 
-    @Override
+    
     protected void checkRequredProperties() {
         checkRequiredProperty(workflowDefinitionFactoryFactory, "workflowDefinitionFactoryFactory");
     }
 
-    @Override
+    
     protected String getPollThreadNamePrefix() {
         return THREAD_NAME_PREFIX + getTaskListToPoll() + " ";
     }
 
-    @Override
+    
     protected TaskPoller createPoller() {
         DecisionTaskPoller result = new DecisionTaskPoller();
         result.setDecisionTaskHandler(new AsyncDecisionTaskHandler(workflowDefinitionFactoryFactory));
@@ -83,12 +83,12 @@ public class GenericWorkflowWorker extends GenericWorker {
         return result;
     }
 
-    @Override
+    
     public void registerTypesToPoll() {
         registerWorkflowTypes(service, domain, getTaskListToPoll(), workflowDefinitionFactoryFactory);
     }
 
-    @Override
+    
     public String toString() {
         return this.getClass().getSimpleName() + "[super=" + super.toString() + ", workflowDefinitionFactoryFactory="
                 + workflowDefinitionFactoryFactory + "]";

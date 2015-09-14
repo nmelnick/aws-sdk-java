@@ -51,32 +51,32 @@ public class TestGenericActivityClient implements GenericActivityClient {
             this.workflowExecution = workflowExecution;
         }
 
-        @Override
+        
         public void recordActivityHeartbeat(String details) throws AmazonServiceException, AmazonClientException {
             //TODO: timeouts
         }
 
-        @Override
+        
         public ActivityTask getTask() {
             return activityTask;
         }
 
-        @Override
+        
         public AmazonSimpleWorkflow getService() {
             throw new UnsupportedOperationException("not implemented");
         }
 
-        @Override
+        
         public String getTaskToken() {
             return activityTask.getTaskToken();
         }
 
-        @Override
+        
         public WorkflowExecution getWorkflowExecution() {
             return workflowExecution;
         }
 
-        @Override
+        
         public String getDomain() {
             return "dummyTestDomain";
         }
@@ -113,7 +113,7 @@ public class TestGenericActivityClient implements GenericActivityClient {
         }
     }
 
-    @Override
+    
     public Promise<String> scheduleActivityTask(final ExecuteActivityParameters parameters) {
         final ActivityType activityType = parameters.getActivityType();
         final Settable<String> result = new Settable<String>();
@@ -179,7 +179,7 @@ public class TestGenericActivityClient implements GenericActivityClient {
         return result;
     }
 
-    @Override
+    
     public Promise<String> scheduleActivityTask(String activity, String version, String input) {
         ExecuteActivityParameters parameters = new ExecuteActivityParameters();
         ActivityType activityType = new ActivityType();
@@ -190,12 +190,12 @@ public class TestGenericActivityClient implements GenericActivityClient {
         return scheduleActivityTask(parameters);
     }
 
-    @Override
+    
     public Promise<String> scheduleActivityTask(final String activity, final String version, final Promise<String> input) {
         final Settable<String> result = new Settable<String>();
         new Task(input) {
 
-            @Override
+            
             protected void doExecute() throws Throwable {
                 result.chain(scheduleActivityTask(activity, version, input.get()));
             }
