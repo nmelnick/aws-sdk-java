@@ -51,37 +51,30 @@ public abstract class WorkflowClientFactoryBase<T> implements WorkflowClientFact
         this.genericClient = genericClient;
     }
 
-    @Override
     public GenericWorkflowClient getGenericClient() {
         return genericClient;
     }
 
-    @Override
     public void setGenericClient(GenericWorkflowClient genericClient) {
         this.genericClient = genericClient;
     }
 
-    @Override
     public DataConverter getDataConverter() {
         return dataConverter;
     }
 
-    @Override
     public void setDataConverter(DataConverter dataConverter) {
         this.dataConverter = dataConverter;
     }
 
-    @Override
     public StartWorkflowOptions getStartWorkflowOptions() {
         return startWorkflowOptions;
     }
 
-    @Override
     public void setStartWorkflowOptions(StartWorkflowOptions startWorkflowOptions) {
         this.startWorkflowOptions = startWorkflowOptions;
     }
 
-    @Override
     public T getClient() {
     	GenericWorkflowClient client = getGenericClientToUse();
         String workflowId = client.generateUniqueId();
@@ -89,7 +82,6 @@ public abstract class WorkflowClientFactoryBase<T> implements WorkflowClientFact
         return getClient(execution, startWorkflowOptions, dataConverter);
     }
 
-    @Override
     public T getClient(String workflowId) {
         if (workflowId == null || workflowId.isEmpty()) {
             throw new IllegalArgumentException("workflowId");
@@ -98,17 +90,14 @@ public abstract class WorkflowClientFactoryBase<T> implements WorkflowClientFact
         return getClient(execution, startWorkflowOptions, dataConverter);
     }
 
-    @Override
     public T getClient(WorkflowExecution execution) {
         return getClient(execution, startWorkflowOptions, dataConverter);
     }
 
-    @Override
     public T getClient(WorkflowExecution execution, StartWorkflowOptions options) {
         return getClient(execution, options, dataConverter);
     }
 
-    @Override
     public T getClient(WorkflowExecution execution, StartWorkflowOptions options, DataConverter dataConverter) {
         GenericWorkflowClient client = getGenericClientToUse();
 		return createClientInstance(execution, options, dataConverter, client);

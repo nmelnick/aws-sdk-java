@@ -39,7 +39,6 @@ public abstract class WorkflowClientFactoryExternalBase<T> implements WorkflowCl
         this.genericClient = genericClient;
     }
 
-    @Override
     public GenericWorkflowClientExternal getGenericClient() {
         return genericClient;
     }
@@ -48,7 +47,6 @@ public abstract class WorkflowClientFactoryExternalBase<T> implements WorkflowCl
         this.genericClient = genericClient;
     }
 
-    @Override
     public DataConverter getDataConverter() {
         return dataConverter;
     }
@@ -57,7 +55,6 @@ public abstract class WorkflowClientFactoryExternalBase<T> implements WorkflowCl
         this.dataConverter = dataConverter;
     }
 
-    @Override
     public StartWorkflowOptions getStartWorkflowOptions() {
         return startWorkflowOptions;
     }
@@ -66,7 +63,6 @@ public abstract class WorkflowClientFactoryExternalBase<T> implements WorkflowCl
         this.startWorkflowOptions = startWorkflowOptions;
     }
 
-    @Override
     public T getClient() {
         checkGenericClient();
         String workflowId = genericClient.generateUniqueId();
@@ -74,7 +70,6 @@ public abstract class WorkflowClientFactoryExternalBase<T> implements WorkflowCl
         return getClient(workflowExecution, startWorkflowOptions, dataConverter, genericClient);
     }
 
-    @Override
     public T getClient(String workflowId) {
         if (workflowId == null || workflowId.isEmpty()) {
             throw new IllegalArgumentException("workflowId");
@@ -83,22 +78,18 @@ public abstract class WorkflowClientFactoryExternalBase<T> implements WorkflowCl
         return getClient(workflowExecution, startWorkflowOptions, dataConverter, genericClient);
     }
 
-    @Override
     public T getClient(WorkflowExecution workflowExecution) {
         return getClient(workflowExecution, startWorkflowOptions, dataConverter, genericClient);
     }
 
-    @Override
     public T getClient(WorkflowExecution workflowExecution, StartWorkflowOptions options) {
         return getClient(workflowExecution, options, dataConverter, genericClient);
     }
 
-    @Override
     public T getClient(WorkflowExecution workflowExecution, StartWorkflowOptions options, DataConverter dataConverter) {
         return getClient(workflowExecution, options, dataConverter, genericClient);
     }
 
-    @Override
     public T getClient(WorkflowExecution workflowExecution, StartWorkflowOptions options, DataConverter dataConverter,
             GenericWorkflowClientExternal genericClient) {
         checkGenericClient();

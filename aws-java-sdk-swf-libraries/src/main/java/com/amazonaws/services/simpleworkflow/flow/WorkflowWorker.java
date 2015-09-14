@@ -36,167 +36,134 @@ public class WorkflowWorker implements WorkerBase {
         genericWorker.setWorkflowDefinitionFactoryFactory(factoryFactory);
     }
 
-    @Override
     public AmazonSimpleWorkflow getService() {
         return genericWorker.getService();
     }
 
-    @Override
     public String getDomain() {
         return genericWorker.getDomain();
     }
 
-    @Override
     public boolean isRegisterDomain() {
         return genericWorker.isRegisterDomain();
     }
 
-    @Override
     public void setRegisterDomain(boolean registerDomain) {
         genericWorker.setRegisterDomain(registerDomain);
     }
 
-    @Override
     public long getDomainRetentionPeriodInDays() {
         return genericWorker.getDomainRetentionPeriodInDays();
     }
 
-    @Override
     public void setDomainRetentionPeriodInDays(long domainRetentionPeriodInDays) {
         genericWorker.setDomainRetentionPeriodInDays(domainRetentionPeriodInDays);
     }
 
-    @Override
     public String getTaskListToPoll() {
         return genericWorker.getTaskListToPoll();
     }
 
-    @Override
     public double getMaximumPollRatePerSecond() {
         return genericWorker.getMaximumPollRatePerSecond();
     }
 
-    @Override
     public void setMaximumPollRatePerSecond(double maximumPollRatePerSecond) {
         genericWorker.setMaximumPollRatePerSecond(maximumPollRatePerSecond);
     }
 
-    @Override
     public int getMaximumPollRateIntervalMilliseconds() {
         return genericWorker.getMaximumPollRateIntervalMilliseconds();
     }
 
-    @Override
     public void setMaximumPollRateIntervalMilliseconds(int maximumPollRateIntervalMilliseconds) {
         genericWorker.setMaximumPollRateIntervalMilliseconds(maximumPollRateIntervalMilliseconds);
     }
 
-    @Override
     public UncaughtExceptionHandler getUncaughtExceptionHandler() {
         return genericWorker.getUncaughtExceptionHandler();
     }
 
-    @Override
     public void setUncaughtExceptionHandler(UncaughtExceptionHandler uncaughtExceptionHandler) {
         genericWorker.setUncaughtExceptionHandler(uncaughtExceptionHandler);
     }
 
-    @Override
     public String getIdentity() {
         return genericWorker.getIdentity();
     }
 
-    @Override
     public void setIdentity(String identity) {
         genericWorker.setIdentity(identity);
     }
 
-    @Override
     public long getPollBackoffInitialInterval() {
         return genericWorker.getPollBackoffInitialInterval();
     }
 
-    @Override
     public void setPollBackoffInitialInterval(long backoffInitialInterval) {
         genericWorker.setPollBackoffInitialInterval(backoffInitialInterval);
     }
 
-    @Override
     public long getPollBackoffMaximumInterval() {
         return genericWorker.getPollBackoffMaximumInterval();
     }
 
-    @Override
     public void setPollBackoffMaximumInterval(long backoffMaximumInterval) {
         genericWorker.setPollBackoffMaximumInterval(backoffMaximumInterval);
     }
 
-    @Override
     public boolean isDisableServiceShutdownOnStop() {
         return genericWorker.isDisableServiceShutdownOnStop();
     }
 
-    @Override
     public void setDisableServiceShutdownOnStop(boolean disableServiceShutdownOnStop) {
         genericWorker.setDisableServiceShutdownOnStop(disableServiceShutdownOnStop);
     }
 
-    @Override
     public double getPollBackoffCoefficient() {
         return genericWorker.getPollBackoffCoefficient();
     }
 
-    @Override
     public void setPollBackoffCoefficient(double backoffCoefficient) {
         genericWorker.setPollBackoffCoefficient(backoffCoefficient);
     }
 
-    @Override
     public int getPollThreadCount() {
         return genericWorker.getPollThreadCount();
     }
 
-    @Override
     public void setPollThreadCount(int threadCount) {
         genericWorker.setPollThreadCount(threadCount);
     }
 
-    @Override
     public void registerTypesToPoll() {
         genericWorker.registerTypesToPoll();
     }
 
-    @Override
     public void start() {
         genericWorker.start();
     }
 
-    @Override
     public void shutdown() {
         genericWorker.shutdown();
     }
 
-    @Override
     public void shutdownNow() {
         genericWorker.shutdownNow();
     }
 
-    @Override
     public boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
         return genericWorker.awaitTermination(timeout, unit);
     }
 
-    @Override
     public boolean isRunning() {
         return genericWorker.isRunning();
     }
 
-    @Override
     public void suspendPolling() {
         genericWorker.suspendPolling();
     }
 
-    @Override
     public void resumePolling() {
         genericWorker.resumePolling();
     }
@@ -220,13 +187,11 @@ public class WorkflowWorker implements WorkerBase {
         factoryFactory.addWorkflowImplementationType(workflowImplementationType, converter);
     }
     
-    @Override
     public String toString() {
         return this.getClass().getSimpleName() + "[genericWorker=" + genericWorker + ", wokflowImplementationTypes="
                 + workflowImplementationTypes + "]";
     }
 
-    @Override
     public boolean shutdownAndAwaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
         return genericWorker.shutdownAndAwaitTermination(timeout, unit);
     }
@@ -239,12 +204,10 @@ public class WorkflowWorker implements WorkerBase {
         factoryFactory.setDataConverter(converter);
     }
 
-    @Override
     public void setDisableTypeRegistrationOnStart(boolean disableTypeRegistrationOnStart) {
         genericWorker.setDisableTypeRegistrationOnStart(disableTypeRegistrationOnStart);
     }
 
-    @Override
     public boolean isDisableTypeRegistrationOnStart() {
         return genericWorker.isDisableTypeRegistrationOnStart();
     }

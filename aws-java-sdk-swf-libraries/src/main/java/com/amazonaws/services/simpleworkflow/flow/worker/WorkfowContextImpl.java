@@ -37,17 +37,14 @@ class WorkfowContextImpl implements WorkflowContext {
         this.decisionTask = decisionTask;
     }
     
-    @Override
     public WorkflowExecution getWorkflowExecution() {
         return decisionTask.getWorkflowExecution();
     }
 
-    @Override
     public WorkflowType getWorkflowType() {
         return decisionTask.getWorkflowType();
     }
 
-    @Override
     public boolean isCancelRequested() {
         return cancelRequested;
     }
@@ -56,48 +53,40 @@ class WorkfowContextImpl implements WorkflowContext {
         cancelRequested = flag;
     }
 
-    @Override
     public ContinueAsNewWorkflowExecutionParameters getContinueAsNewOnCompletion() {
         return continueAsNewOnCompletion;
     }
 
-    @Override
     public void setContinueAsNewOnCompletion(ContinueAsNewWorkflowExecutionParameters continueParameters) {
         this.continueAsNewOnCompletion = continueParameters;
     }
 
-    @Override
     public WorkflowExecution getParentWorkflowExecution() {
         WorkflowExecutionStartedEventAttributes attributes = getWorkflowStartedEventAttributes();
         return attributes.getParentWorkflowExecution();
     }
 
-    @Override
     public List<String> getTagList() {
         WorkflowExecutionStartedEventAttributes attributes = getWorkflowStartedEventAttributes();
         return attributes.getTagList();
     }
 
-    @Override
     public ChildPolicy getChildPolicy() {
         WorkflowExecutionStartedEventAttributes attributes = getWorkflowStartedEventAttributes();
         return ChildPolicy.fromValue(attributes.getChildPolicy());
     }
     
-    @Override
     public String getContinuedExecutionRunId() {
         WorkflowExecutionStartedEventAttributes attributes = getWorkflowStartedEventAttributes();
         return attributes.getContinuedExecutionRunId();
     }
     
-    @Override
     public long getExecutionStartToCloseTimeout() {
         WorkflowExecutionStartedEventAttributes attributes = getWorkflowStartedEventAttributes();
         String result = attributes.getExecutionStartToCloseTimeout();
         return FlowHelpers.durationToSeconds(result);
     }
     
-    @Override
     public String getTaskList() {
         WorkflowExecutionStartedEventAttributes attributes = getWorkflowStartedEventAttributes();
         return attributes.getTaskList().getName();
@@ -109,7 +98,6 @@ class WorkfowContextImpl implements WorkflowContext {
         return attributes;
     }
 
-    @Override
     public int getTaskPriority() {
         WorkflowExecutionStartedEventAttributes attributes = getWorkflowStartedEventAttributes();
         String result = attributes.getTaskPriority();

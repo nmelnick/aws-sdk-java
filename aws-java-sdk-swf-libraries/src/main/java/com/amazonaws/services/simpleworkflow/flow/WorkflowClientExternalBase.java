@@ -45,32 +45,26 @@ public abstract class WorkflowClientExternalBase implements WorkflowClientExtern
                 dataConverter, genericClient);
     }
 
-    @Override
     public void requestCancelWorkflowExecution() {
         dynamicWorkflowClient.requestCancelWorkflowExecution();
     }
 
-    @Override
     public void terminateWorkflowExecution(String reason, String details, ChildPolicy childPolicy) {
         dynamicWorkflowClient.terminateWorkflowExecution(reason, details, childPolicy);
     }
 
-    @Override
     public DataConverter getDataConverter() {
         return dynamicWorkflowClient.getDataConverter();
     }
 
-    @Override
     public StartWorkflowOptions getSchedulingOptions() {
         return dynamicWorkflowClient.getSchedulingOptions();
     }
 
-    @Override
     public GenericWorkflowClientExternal getGenericClient() {
         return dynamicWorkflowClient.getGenericClient();
     }
 
-    @Override
     public WorkflowExecution getWorkflowExecution() {
         return dynamicWorkflowClient.getWorkflowExecution();
     }

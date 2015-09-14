@@ -48,17 +48,14 @@ public class WorkflowReplayer<T> {
             super.addWorkflowImplementationType(workflowImplementation.getClass());
         }
 
-        @Override
         protected POJOWorkflowImplementationFactory getImplementationFactory(Class<?> workflowImplementationType,
                 Class<?> workflowInteface, WorkflowType workflowType) {
             return new POJOWorkflowImplementationFactory() {
 
-                @Override
                 public Object newInstance(DecisionContext decisionContext) throws Exception {
                     return workflowImplementation;
                 }
 
-                @Override
                 public void deleteInstance(Object instance) {
                 }
             };
@@ -76,7 +73,6 @@ public class WorkflowReplayer<T> {
             next = getNextHistoryTask(null);
         }
 
-        @Override
         public boolean hasNext() {
             if (!initialized) {
                 initNext();
@@ -96,7 +92,6 @@ public class WorkflowReplayer<T> {
             return firstEvent.getEventId() <= replayUpToEventId;
         }
 
-        @Override
         public DecisionTask next() {
             if (!hasNext()) {
                 throw new IllegalStateException("hasNext() == false");
@@ -111,7 +106,6 @@ public class WorkflowReplayer<T> {
             return result;
         }
 
-        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
@@ -188,7 +182,6 @@ public class WorkflowReplayer<T> {
             this.history = history;
         }
 
-        @Override
         protected DecisionTask getNextHistoryTask(String nextPageToken) {
             DecisionTask result = new DecisionTask();
             Iterator<HistoryEvent> iterator = history.iterator();

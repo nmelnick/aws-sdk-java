@@ -46,32 +46,26 @@ public abstract class WorkflowSelfClientBase implements WorkflowSelfClient {
         }
     }
 
-    @Override
     public DataConverter getDataConverter() {
         return dataConverter;
     }
 
-    @Override
     public void setDataConverter(DataConverter converter) {
         this.dataConverter = converter;
     }
 
-    @Override
     public StartWorkflowOptions getSchedulingOptions() {
         return schedulingOptions;
     }
 
-    @Override
     public void setSchedulingOptions(StartWorkflowOptions schedulingOptions) {
         this.schedulingOptions = schedulingOptions;
     }
 
-    @Override
     public GenericWorkflowClient getGenericClient() {
         return genericClient;
     }
 
-    @Override
     public void setGenericClient(GenericWorkflowClient genericClient) {
         this.genericClient = genericClient;
     }

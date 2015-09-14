@@ -29,22 +29,18 @@ public abstract class WorkflowClientBase implements WorkflowClient {
                 genericClient);
     }
 
-    @Override
     public DataConverter getDataConverter() {
         return dynamicWorkflowClient.getDataConverter();
     }
 
-    @Override
     public StartWorkflowOptions getSchedulingOptions() {
         return dynamicWorkflowClient.getSchedulingOptions();
     }
 
-    @Override
     public GenericWorkflowClient getGenericClient() {
         return dynamicWorkflowClient.getGenericClient();
     }
 
-    @Override
     public Promise<String> getRunId() {
         return dynamicWorkflowClient.getRunId();
     }
@@ -53,7 +49,6 @@ public abstract class WorkflowClientBase implements WorkflowClient {
         return dynamicWorkflowClient.getWorkflowExecution();
     }
 
-    @Override
     public WorkflowType getWorkflowType() {
         return dynamicWorkflowClient.getWorkflowType();
     }
